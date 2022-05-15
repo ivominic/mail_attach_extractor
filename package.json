@@ -1,0 +1,29 @@
+{
+  "name": "mail_attach_extractor",
+  "version": "1.0.0",
+  "description": "NodeJS project that allows automatic extraction of attachments from received mails",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivominic/mail_attach_extractor.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ivominic/mail_attach_extractor/issues"
+  },
+  "homepage": "https://github.com/ivominic/mail_attach_extractor#readme",
+  "dependencies": {
+    "googleapis": "^39.2.0",
+    "mighty-pdf-parser": "^1.0.0",
+    "pdf-parse": "^1.1.1",
+    "pdf-text-extract": "^1.5.0",
+    "pdf-to-text": "^0.0.7",
+    "pdf2json": "^2.0.1",
+    "pdfreader": "^2.0.0"
+  }
+}
