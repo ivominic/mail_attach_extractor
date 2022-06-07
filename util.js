@@ -19,7 +19,14 @@ function writeLog(message, color) {
   }
 }
 
+function makeDir(folder) {
+  let retval = true;
+  fs.mkdirSync(folder, { recursive: true });
+  return retval;
+}
+
 module.exports = {
   processError,
   writeLog,
+  makeDir,
 };

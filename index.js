@@ -68,6 +68,16 @@ function fileContent(filename, content) {
     }
   } else {
     let logMessage = `Uspjeh: "${filename}", kompanija: "${companyName}", žiro račun: "${companyAccountNumber}"`;
+    let destinationDir = `${writeDirectoryPath}/${companyFolder}/`;
+    moveFiles(filename, readDirectoryPath, destinationDir);
     util.writeLog(logMessage, false);
+  }
+}
+
+function moveFiles(filename, sourceDir, destinationDir) {
+  if (util.makeDir(destinationDir)) {
+    fs.rename(sourceDir + filename, destinationDir + filename, function (err) {
+      if (err) util.processError(err);
+    });
   }
 }
