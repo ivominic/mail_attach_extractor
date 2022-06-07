@@ -1,5 +1,6 @@
-let pdfUtil = require("pdf-to-text");
-let fs = require("fs");
+const pdfUtil = require("pdf-to-text");
+const fs = require("fs");
+const util = require("./util");
 
 let folderData = JSON.parse(fs.readFileSync("data/json/folders.json", { encoding: "utf8" }));
 
@@ -20,13 +21,13 @@ let writeDirectoryPath = folderData.writeDir;
 function readFiles(dirname, onFileContent, onError) {
   fs.readdir(dirname, function (err, filenames) {
     if (err) {
-      onError(err);
+      util.processError(err);
       return;
     }
     filenames.forEach(function (filename) {
       if (filename.toLowerCase().endsWith(".pdf")) {
         pdfUtil.pdfToText(readDirectoryPath + filename, function (err, data) {
-          if (err) throw err;
+          if (err) util.processError(err);
           onFileContent(filename, data);
         });
       }
@@ -34,7 +35,7 @@ function readFiles(dirname, onFileContent, onError) {
   });
 }
 
-readFiles(readDirectoryPath, fileContent, processError);
+readFiles(readDirectoryPath, fileContent, util.processError);
 
 function fileContent(filename, content) {
   let numberOfMatches = 0;
@@ -46,7 +47,6 @@ function fileContent(filename, content) {
 
   companiesData.forEach((element) => {
     if (element.ziro_racun && element.ziro_racun !== "null") {
-      //console.log("\x1b[37m", element.ziro_racun);
       if (content.indexOf(element.ziro_racun) !== -1) {
         numberOfMatches++;
         companyName = element.sinonim;
@@ -54,30 +54,20 @@ function fileContent(filename, content) {
         companyAccountNumber = element.ziro_racun;
         multipleCompanyNames += companyName + ", ";
         multipleCompanyAccounts += companyAccountNumber + ", ";
-        //console.log("\x1b[31m", companyName, companyAccountNumber);
       }
     }
   });
 
   if (numberOfMatches !== 1) {
     if (numberOfMatches === 0) {
-      console.log("\x1b[31m", "Nije nađen nijedan žiro račun za fajl: ", filename);
+      let logMessage = `Nije nađen nijedan žiro račun za fajl: "${filename}"`;
+      util.writeLog(logMessage, true);
     } else {
-      console.log(
-        "\x1b[31m",
-        "Za fajl:",
-        filename,
-        "nađene su sljedeće kompanije:",
-        multipleCompanyNames,
-        " i žr:",
-        multipleCompanyAccounts
-      );
+      let logMessage = `Višestruki za: "${filename}", kompanije: "${multipleCompanyNames}", žr: "${multipleCompanyAccounts}"`;
+      util.writeLog(logMessage, true);
     }
   } else {
-    console.log("\x1b[37m", filename, companyName, companyAccountNumber);
+    let logMessage = `Uspjeh: "${filename}", kompanija: "${companyName}", žiro račun: "${companyAccountNumber}"`;
+    util.writeLog(logMessage, false);
   }
-}
-
-function processError(error) {
-  console.error("ERROR: ", error);
 }
