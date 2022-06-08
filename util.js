@@ -25,8 +25,13 @@ function makeDir(folder) {
   return retval;
 }
 
+function contentToArrayByLine(content) {
+  return content.split(os.EOL);
+}
+
 module.exports = {
   processError,
   writeLog,
   makeDir,
+  contentToArrayByLine,
 };

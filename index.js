@@ -47,6 +47,7 @@ function fileContent(filename, content) {
 
   companiesData.forEach((element) => {
     if (element.ziro_racun && element.ziro_racun !== "null") {
+      //TODO: Ovdje pozvati provjere za svaku od banaka i vratiti putanju u koju se prebacuje fajl.
       if (content.indexOf(element.ziro_racun) !== -1) {
         numberOfMatches++;
         companyName = element.sinonim;
