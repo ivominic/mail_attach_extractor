@@ -65,18 +65,21 @@ function fileContent(filename, content) {
   if (destFilename) {
     let destinationFile = `${writeDirectoryPath}/${companyFolder}/${destFilename}`;
     let logMessage = `Uspjeh: "${filename}", kompanija: "${companyName}", žiro račun: "${companyAccountNumber}", putanja: "${destinationFile}"`;
-    moveFiles(readDirectoryPath + filename, destinationFile);
-    util.writeLog(logMessage, false);
+    moveFiles(readDirectoryPath + filename, destinationFile, logMessage);
   } else {
     let logMessage = `Nije nađen nijedan žiro račun za fajl: "${filename}"`;
     util.writeLog(logMessage, true);
   }
 }
 
-function moveFiles(sourceDir, destinationDir) {
+function moveFiles(sourceDir, destinationDir, message) {
   if (util.makeDir(destinationDir)) {
     fs.rename(sourceDir, destinationDir, function (err) {
-      if (err) util.processError(err);
+      if (err) {
+        util.processError(err);
+      } else {
+        util.writeLog(message, false);
+      }
     });
   }
 }
