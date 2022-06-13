@@ -30,7 +30,7 @@ function domesticAddiko(accountNumber, contentArray) {
     let dateValue = contentArray[10].substring(datePosition, datePosition + 10).trim();
     let numberValue = parseInt(contentArray[9].substring(numberPosition, numberPosition + 3).trim());
     if (accountNumber === accountValue) {
-      retVal = `br.${numberValue} od ${dateValue}.pdf`;
+      retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
     }
   }
   return retVal;
@@ -46,7 +46,7 @@ function domesticCKB(accountNumber, contentArray) {
     let dateValue = contentArray[0].substring(datePosition, datePosition + 10).trim();
     let numberValue = parseInt(contentArray[0].substring(numberPosition, numberPosition + 3).trim());
     if (accountNumber === accountValue) {
-      retVal = `br.${numberValue} od ${dateValue}.pdf`;
+      retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
     }
   }
   return retVal;
@@ -63,7 +63,7 @@ function domesticHipotekarna(accountNumber, contentArray) {
     let dateValue = contentArray[5].substring(datePosition).trim();
     let numberValue = parseInt(contentArray[5].substring(numberPosition, numberPosition + 5).trim());
     if (accountNumber === accountValue) {
-      retVal = `br.${numberValue} od ${dateValue}.pdf`;
+      retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
     }
   }
   return retVal;
@@ -79,7 +79,7 @@ function domesticLovcen(accountNumber, contentArray) {
     let dateValue = contentArray[10].substring(datePosition).trim();
     let numberValue = parseInt(contentArray[9].substring(numberPosition).trim());
     if (accountNumber === accountValue) {
-      retVal = `br.${numberValue} od ${dateValue}.pdf`;
+      retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
     }
   }
   return retVal;
@@ -95,7 +95,7 @@ function domesticZapad(accountNumber, contentArray) {
     let dateValue = contentArray[2].substring(datePosition).trim();
     let numberValue = parseInt(contentArray[0].substring(numberPosition).trim());
     if (accountNumber === accountValue) {
-      retVal = `br.${numberValue} od ${dateValue}.pdf`;
+      retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
     }
   }
   return retVal;
@@ -111,7 +111,7 @@ function domesticZiirat(accountNumber, contentArray) {
     let dateValue = contentArray[1].substring(datePosition).trim();
     let numberValue = parseInt(contentArray[0].substring(numberPosition).trim());
     if (accountNumber === accountValue) {
-      retVal = `br.${numberValue} od ${dateValue}.pdf`;
+      retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
     }
   }
   return retVal;
@@ -125,7 +125,7 @@ function domesticNLB(accountNumber, contentArray) {
   if (accountValue === accountNumber && datePosition >= 6 && numberPosition >= 10) {
     let dateValue = contentArray[1].substring(datePosition).trim();
     let numberValue = parseInt(contentArray[0].substring(numberPosition).trim());
-    retVal = `br.${numberValue} od ${dateValue}.pdf`;
+    retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
   }
   return retVal;
 }
@@ -140,7 +140,7 @@ function foreignCKB(accountNumber, contentArray) {
     let dateValue = contentArray[0].substring(datePosition, datePosition + 10).trim();
     let numberValue = parseInt(contentArray[0].substring(numberPosition, numberPosition + 3).trim());
     if (accountNumber === accountValue) {
-      retVal = `br.${numberValue} od ${dateValue}.pdf`;
+      retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
     }
   }
   return retVal;
@@ -153,7 +153,7 @@ function foreignHipotekarna(accountNumber, contentArray) {
   let numberValue = parseInt(contentArray[2].substring(123).trim());
   let dateValue = contentArray[8].substring(120).trim();
   if (accountNumber === accountValue && dateValue && numberValue) {
-    retVal = `br.${numberValue} od ${dateValue}.pdf`;
+    retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
   }
   return retVal;
 }
@@ -164,7 +164,7 @@ function foreignLovcen(accountNumber, contentArray) {
   let dateValue = contentArray[11].trim();
   let numberValue = parseInt(contentArray[9].trim().substring(0, 3));
   if (accountNumber === accountValue) {
-    retVal = `br.${numberValue} od ${dateValue}.pdf`;
+    retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
   }
   return retVal;
 }
@@ -175,7 +175,7 @@ function foreignNLB(accountNumber, contentArray) {
   let dateValue = contentArray[26].substring(0, 10).trim();
   let numberValue = parseInt(contentArray[17].substring(9, 12).trim());
   if (accountValue === accountNumber && dateValue && numberValue) {
-    retVal = `br.${numberValue} od ${dateValue}.pdf`;
+    retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
   }
   return retVal;
 }
@@ -191,10 +191,16 @@ function foreignZiirat(accountNumber, contentArray) {
   let numberValue = parseInt(contentArray[0].substring(55, 58).trim());
   if (accountValue && dateValue && numberValue) {
     if (accountNumber === accountValue) {
-      retVal = `br.${numberValue} od ${dateValue}.pdf`;
+      retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
     }
   }
   return retVal;
+}
+
+function formatNumber(number) {
+  let value = `00${number}`;
+  console.log("AAAAAAAAAAAAAAAAAAAA", value.substring(value.length - 3, value.length));
+  return value.substring(value.length - 3, value.length);
 }
 
 module.exports = {
