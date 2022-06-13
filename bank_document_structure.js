@@ -55,15 +55,9 @@ function domesticCKB(accountNumber, contentArray) {
 function domesticHipotekarna(accountNumber, contentArray) {
   //Not structured pdf correctly. Ask for better file!!!!!!!!!!!!!!!!!!!!!!
   let retVal = "";
-  //let accountPosition = contentArray[3].indexOf("Broj računa: ") + 13;
   let accountPosition = 81;
-  //let datePosition = contentArray[5].indexOf(" za dan ") + 8;
   let datePosition = 70;
-  //let numberPosition = contentArray[5].indexOf("Izvod br. ") + 10;
   let numberPosition = 60;
-  //console.log(contentArray[3]);
-  //console.log(contentArray[5]);
-  //if (accountPosition >= 13 && datePosition >= 8 && numberPosition >= 10) {
   if (contentArray[3].length >= 99 && contentArray[5].length >= 89) {
     let accountValue = contentArray[3].substring(accountPosition, accountPosition + 18).trim();
     let dateValue = contentArray[5].substring(datePosition).trim();
@@ -96,11 +90,7 @@ function domesticZapad(accountNumber, contentArray) {
   let accountPosition = contentArray[4].indexOf("Žiro račun: ") + 12;
   let datePosition = contentArray[2].indexOf("za dan ") + 6;
   let numberPosition = contentArray[0].indexOf("IZVOD RAČUNA - broj ") + 19;
-  console.log("object", accountPosition);
-  console.log("object", datePosition);
-  console.log("object", numberPosition);
   if (accountPosition >= 12 && datePosition >= 6 && numberPosition >= 19) {
-    console.log("RADI");
     let accountValue = contentArray[4].substring(accountPosition, accountPosition + 40).trim();
     let dateValue = contentArray[2].substring(datePosition).trim();
     let numberValue = parseInt(contentArray[0].substring(numberPosition).trim());
@@ -159,26 +149,11 @@ function foreignCKB(accountNumber, contentArray) {
 function foreignHipotekarna(accountNumber, contentArray) {
   //Not structured pdf correctly. Ask for better file!!!!!!!!!!!!!!!!!!!!!!
   let retVal = "";
-  let accountPosition = contentArray[6].indexOf("IBAN ") + 13;
-  //let datePosition = contentArray[5].indexOf(" za dan ") + 8;
-  let datePosition = 123;
-  //let numberPosition = contentArray[5].indexOf("Izvod br. ") + 10;
-  let numberPosition = 131;
-  //console.log(contentArray[6]);
-  //console.log(contentArray[8]);
-  //console.log(contentArray[2]);
-  //console.log(contentArray[6].length);
-  //console.log(contentArray[8].length);
-  //console.log(contentArray[2].length);
-  if (contentArray[6].length >= 122 && contentArray[8].length >= 133 && contentArray[2].length >= 133) {
-    let accountValue = contentArray[6].substring(accountPosition).trim();
-    let dateValue = contentArray[8].substring(datePosition).trim();
-    let numberValue = parseInt(contentArray[2].substring(numberPosition, numberPosition + 5).trim());
-    //console.log("asdsadsa", accountValue);
-    //console.log("bbbbbbbb", accountNumber);
-    if (accountNumber === accountValue) {
-      retVal = `br.${numberValue} od ${dateValue}.pdf`;
-    }
+  let accountValue = contentArray[3].substring(95).trim();
+  let numberValue = parseInt(contentArray[2].substring(123).trim());
+  let dateValue = contentArray[8].substring(120).trim();
+  if (accountNumber === accountValue && dateValue && numberValue) {
+    retVal = `br.${numberValue} od ${dateValue}.pdf`;
   }
   return retVal;
 }
