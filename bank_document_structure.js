@@ -8,9 +8,11 @@ function findAccountNumberInSpecificLine(accountNumber, content) {
   !filename && (filename = domesticCKB(accountNumber, contentArray));
   !filename && (filename = domesticHipotekarna(accountNumber, contentArray));
   !filename && (filename = domesticLovcen(accountNumber, contentArray));
+  !filename && (filename = domesticZiirat(accountNumber, contentArray));
   !filename && (filename = foreignCKB(accountNumber, contentArray));
   !filename && (filename = foreignHipotekarna(accountNumber, contentArray));
   !filename && (filename = foreignLovcen(accountNumber, contentArray));
+  !filename && (filename = foreignZiirat(accountNumber, contentArray));
   console.log("filename", filename);
   return filename;
 }
@@ -86,6 +88,22 @@ function domesticLovcen(accountNumber, contentArray) {
   return retVal;
 }
 
+function domesticZiirat(accountNumber, contentArray) {
+  let retVal = "";
+  let accountPosition = contentArray[4].indexOf("Račun: ") + 7;
+  let datePosition = contentArray[1].indexOf(" NA DAN ") + 7;
+  let numberPosition = contentArray[0].indexOf("IZVOD BROJ ") + 11;
+  if (accountPosition >= 7 && datePosition >= 7 && numberPosition >= 11) {
+    let accountValue = contentArray[4].substring(accountPosition, accountPosition + 30).trim();
+    let dateValue = contentArray[1].substring(datePosition).trim();
+    let numberValue = parseInt(contentArray[0].substring(numberPosition).trim());
+    if (accountNumber === accountValue) {
+      retVal = `br.${numberValue} od ${dateValue}.pdf`;
+    }
+  }
+  return retVal;
+}
+
 function foreignCKB(accountNumber, contentArray) {
   let retVal = "";
   let accountPosition = contentArray[4].indexOf("IBAN:") + 6;
@@ -136,6 +154,23 @@ function foreignLovcen(accountNumber, contentArray) {
   let numberValue = parseInt(contentArray[9].trim().substring(0, 3));
   if (accountNumber === accountValue) {
     retVal = `br.${numberValue} od ${dateValue}.pdf`;
+  }
+  return retVal;
+}
+
+function foreignZiirat(accountNumber, contentArray) {
+  let retVal = "";
+  let accountPosition = contentArray[6].indexOf("Račun: ") + 7;
+  let accountValue = contentArray[6].substring(accountPosition, accountPosition + 30).trim();
+  if (accountValue !== accountNumber) {
+    accountValue = contentArray[7].trim();
+  }
+  let dateValue = contentArray[26].substring(40, 55).trim();
+  let numberValue = parseInt(contentArray[0].substring(55, 58).trim());
+  if (accountValue && dateValue && numberValue) {
+    if (accountNumber === accountValue) {
+      retVal = `br.${numberValue} od ${dateValue}.pdf`;
+    }
   }
   return retVal;
 }
