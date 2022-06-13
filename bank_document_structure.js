@@ -9,6 +9,7 @@ function findAccountNumberInSpecificLine(accountNumber, content) {
   !filename && (filename = domesticHipotekarna(accountNumber, contentArray));
   !filename && (filename = domesticLovcen(accountNumber, contentArray));
   !filename && (filename = domesticNLB(accountNumber, contentArray));
+  !filename && (filename = domesticZapad(accountNumber, contentArray));
   !filename && (filename = domesticZiirat(accountNumber, contentArray));
   !filename && (filename = foreignCKB(accountNumber, contentArray));
   !filename && (filename = foreignHipotekarna(accountNumber, contentArray));
@@ -83,6 +84,26 @@ function domesticLovcen(accountNumber, contentArray) {
     let accountValue = contentArray[13].substring(accountPosition, accountPosition + 40).trim();
     let dateValue = contentArray[10].substring(datePosition).trim();
     let numberValue = parseInt(contentArray[9].substring(numberPosition).trim());
+    if (accountNumber === accountValue) {
+      retVal = `br.${numberValue} od ${dateValue}.pdf`;
+    }
+  }
+  return retVal;
+}
+
+function domesticZapad(accountNumber, contentArray) {
+  let retVal = "";
+  let accountPosition = contentArray[4].indexOf("Žiro račun: ") + 12;
+  let datePosition = contentArray[2].indexOf("za dan ") + 6;
+  let numberPosition = contentArray[0].indexOf("IZVOD RAČUNA - broj ") + 19;
+  console.log("object", accountPosition);
+  console.log("object", datePosition);
+  console.log("object", numberPosition);
+  if (accountPosition >= 12 && datePosition >= 6 && numberPosition >= 19) {
+    console.log("RADI");
+    let accountValue = contentArray[4].substring(accountPosition, accountPosition + 40).trim();
+    let dateValue = contentArray[2].substring(datePosition).trim();
+    let numberValue = parseInt(contentArray[0].substring(numberPosition).trim());
     if (accountNumber === accountValue) {
       retVal = `br.${numberValue} od ${dateValue}.pdf`;
     }
