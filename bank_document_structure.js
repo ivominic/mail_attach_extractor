@@ -10,6 +10,7 @@ function findAccountNumberInSpecificLine(accountNumber, content) {
   !filename && (filename = domesticLovcen(accountNumber, contentArray));
   !filename && (filename = foreignCKB(accountNumber, contentArray));
   !filename && (filename = foreignHipotekarna(accountNumber, contentArray));
+  !filename && (filename = foreignLovcen(accountNumber, contentArray));
   console.log("filename", filename);
   return filename;
 }
@@ -124,6 +125,17 @@ function foreignHipotekarna(accountNumber, contentArray) {
     if (accountNumber === accountValue) {
       retVal = `br.${numberValue} od ${dateValue}.pdf`;
     }
+  }
+  return retVal;
+}
+
+function foreignLovcen(accountNumber, contentArray) {
+  let retVal = "";
+  let accountValue = contentArray[10].trim();
+  let dateValue = contentArray[11].trim();
+  let numberValue = parseInt(contentArray[9].trim().substring(0, 3));
+  if (accountNumber === accountValue) {
+    retVal = `br.${numberValue} od ${dateValue}.pdf`;
   }
   return retVal;
 }
