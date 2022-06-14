@@ -3,7 +3,6 @@ const util = require("./util");
 function findAccountNumberInSpecificLine(accountNumber, content) {
   let contentArray = util.contentToArrayByLine(content);
   let filename = "";
-  console.log("Account number", accountNumber);
   !filename && (filename = domesticAddiko(accountNumber, contentArray));
   !filename && (filename = domesticCKB(accountNumber, contentArray));
   !filename && (filename = domesticHipotekarna(accountNumber, contentArray));
@@ -16,12 +15,12 @@ function findAccountNumberInSpecificLine(accountNumber, content) {
   !filename && (filename = foreignLovcen(accountNumber, contentArray));
   !filename && (filename = foreignNLB(accountNumber, contentArray));
   !filename && (filename = foreignZiirat(accountNumber, contentArray));
-  console.log("filename", filename);
   return filename;
 }
 
 function domesticAddiko(accountNumber, contentArray) {
   let retVal = "";
+  if (contentArray.length < 11) return retVal;
   let accountPosition = contentArray[9].indexOf(" za račun ") + 10;
   let datePosition = contentArray[10].indexOf(" na dan ") + 8;
   let numberPosition = contentArray[9].indexOf("Izvod broj ") + 11;
@@ -38,6 +37,7 @@ function domesticAddiko(accountNumber, contentArray) {
 
 function domesticCKB(accountNumber, contentArray) {
   let retVal = "";
+  if (contentArray.length < 1) return retVal;
   let accountPosition = contentArray[0].indexOf(" stanje računa ") + 15;
   let datePosition = contentArray[0].indexOf(" na dan ") + 8;
   let numberPosition = contentArray[0].indexOf("Izvod broj ") + 11;
@@ -55,6 +55,7 @@ function domesticCKB(accountNumber, contentArray) {
 function domesticHipotekarna(accountNumber, contentArray) {
   //Not structured pdf correctly. Ask for better file!!!!!!!!!!!!!!!!!!!!!!
   let retVal = "";
+  if (contentArray.length < 6) return retVal;
   let accountPosition = 81;
   let datePosition = 70;
   let numberPosition = 60;
@@ -71,6 +72,7 @@ function domesticHipotekarna(accountNumber, contentArray) {
 
 function domesticLovcen(accountNumber, contentArray) {
   let retVal = "";
+  if (contentArray.length < 14) return retVal;
   let accountPosition = contentArray[13].indexOf("Račun: ") + 7;
   let datePosition = contentArray[10].indexOf("Datum:") + 6;
   let numberPosition = contentArray[9].indexOf("Izvod broj:") + 11;
@@ -87,6 +89,7 @@ function domesticLovcen(accountNumber, contentArray) {
 
 function domesticZapad(accountNumber, contentArray) {
   let retVal = "";
+  if (contentArray.length < 5) return retVal;
   let accountPosition = contentArray[4].indexOf("Žiro račun: ") + 12;
   let datePosition = contentArray[2].indexOf("za dan ") + 6;
   let numberPosition = contentArray[0].indexOf("IZVOD RAČUNA - broj ") + 19;
@@ -103,6 +106,7 @@ function domesticZapad(accountNumber, contentArray) {
 
 function domesticZiirat(accountNumber, contentArray) {
   let retVal = "";
+  if (contentArray.length < 5) return retVal;
   let accountPosition = contentArray[4].indexOf("Račun: ") + 7;
   let datePosition = contentArray[1].indexOf(" NA DAN ") + 7;
   let numberPosition = contentArray[0].indexOf("IZVOD BROJ ") + 11;
@@ -119,6 +123,7 @@ function domesticZiirat(accountNumber, contentArray) {
 
 function domesticNLB(accountNumber, contentArray) {
   let retVal = "";
+  if (contentArray.length < 4) return retVal;
   let accountValue = contentArray[3].substring(contentArray[3].length - 25, contentArray[3].length).trim();
   let datePosition = contentArray[1].indexOf(" DANA ") + 6;
   let numberPosition = contentArray[0].indexOf("IZVOD BR. ") + 10;
@@ -132,6 +137,7 @@ function domesticNLB(accountNumber, contentArray) {
 
 function foreignCKB(accountNumber, contentArray) {
   let retVal = "";
+  if (contentArray.length < 5) return retVal;
   let accountPosition = contentArray[4].indexOf("IBAN:") + 6;
   let datePosition = contentArray[0].indexOf(" na dan ") + 8;
   let numberPosition = contentArray[0].indexOf("Devizni izvod broj ") + 19;
@@ -149,6 +155,7 @@ function foreignCKB(accountNumber, contentArray) {
 function foreignHipotekarna(accountNumber, contentArray) {
   //Not structured pdf correctly. Ask for better file!!!!!!!!!!!!!!!!!!!!!!
   let retVal = "";
+  if (contentArray.length < 9) return retVal;
   let accountValue = contentArray[3].substring(95).trim();
   let numberValue = parseInt(contentArray[2].substring(123).trim());
   let dateValue = contentArray[8].substring(120).trim();
@@ -160,6 +167,7 @@ function foreignHipotekarna(accountNumber, contentArray) {
 
 function foreignLovcen(accountNumber, contentArray) {
   let retVal = "";
+  if (contentArray.length < 12) return retVal;
   let accountValue = contentArray[10].trim();
   let dateValue = contentArray[11].trim();
   let numberValue = parseInt(contentArray[9].trim().substring(0, 3));
@@ -171,6 +179,7 @@ function foreignLovcen(accountNumber, contentArray) {
 
 function foreignNLB(accountNumber, contentArray) {
   let retVal = "";
+  if (contentArray.length < 27) return retVal;
   let accountValue = contentArray[14].substring(8).trim();
   let dateValue = contentArray[26].substring(0, 10).trim();
   let numberValue = parseInt(contentArray[17].substring(9, 12).trim());
@@ -182,6 +191,7 @@ function foreignNLB(accountNumber, contentArray) {
 
 function foreignZiirat(accountNumber, contentArray) {
   let retVal = "";
+  if (contentArray.length < 27) return retVal;
   let accountPosition = contentArray[6].indexOf("Račun: ") + 7;
   let accountValue = contentArray[6].substring(accountPosition, accountPosition + 30).trim();
   if (accountValue !== accountNumber) {
@@ -199,7 +209,6 @@ function foreignZiirat(accountNumber, contentArray) {
 
 function formatNumber(number) {
   let value = `00${number}`;
-  console.log("AAAAAAAAAAAAAAAAAAAA", value.substring(value.length - 3, value.length));
   return value.substring(value.length - 3, value.length);
 }
 
