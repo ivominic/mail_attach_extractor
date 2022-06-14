@@ -47,27 +47,32 @@ function fileContent(filename, content) {
   let multipleCompanyAccounts = "";
   let destFilename = "";
 
-  companiesData.forEach((element) => {
-    if (element.ziro_racun && element.ziro_racun !== "null") {
-      //TODO: Ovdje pozvati provjere za svaku od banaka i vratiti putanju u koju se prebacuje fajl.
-      if (content.indexOf(element.ziro_racun) !== -1 && !destFilename) {
-        numberOfMatches++;
-        companyName = element.sinonim;
-        companyFolder = element.folder;
-        companyAccountNumber = element.ziro_racun;
-        multipleCompanyNames += companyName + ", ";
-        multipleCompanyAccounts += companyAccountNumber + ", ";
-        destFilename = bankStructure.findAccountNumberInSpecificLine(element.ziro_racun, content);
+  if (content) {
+    companiesData.forEach((element) => {
+      if (element.ziro_racun && element.ziro_racun !== "null") {
+        //TODO: Ovdje pozvati provjere za svaku od banaka i vratiti putanju u koju se prebacuje fajl.
+        if (content.indexOf(element.ziro_racun) !== -1 && !destFilename) {
+          numberOfMatches++;
+          companyName = element.sinonim;
+          companyFolder = element.folder;
+          companyAccountNumber = element.ziro_racun;
+          multipleCompanyNames += companyName + ", ";
+          multipleCompanyAccounts += companyAccountNumber + ", ";
+          destFilename = bankStructure.findAccountNumberInSpecificLine(element.ziro_racun, content);
+        }
       }
-    }
-  });
+    });
 
-  if (destFilename) {
-    let destinationFile = `${writeDirectoryPath}/${companyFolder}/`;
-    let logMessage = `Uspjeh: "${filename}", kompanija: "${companyName}", žiro račun: "${companyAccountNumber}", putanja: "${destinationFile}/${destFilename}"`;
-    moveFiles(readDirectoryPath + filename, destinationFile, destFilename, logMessage);
+    if (destFilename) {
+      let destinationFile = `${writeDirectoryPath}/${companyFolder}/`;
+      let logMessage = `Uspjeh: "${filename}", kompanija: "${companyName}", žiro račun: "${companyAccountNumber}", putanja: "${destinationFile}${destFilename}"`;
+      moveFiles(readDirectoryPath + filename, destinationFile, destFilename, logMessage);
+    } else {
+      let logMessage = `Nije nađen nijedan žiro račun za fajl: "${filename}"`;
+      util.writeLog(logMessage, true);
+    }
   } else {
-    let logMessage = `Nije nađen nijedan žiro račun za fajl: "${filename}"`;
+    let logMessage = `Sadržaj fajla: "${filename}" nije pročitan.`;
     util.writeLog(logMessage, true);
   }
 }

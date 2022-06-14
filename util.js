@@ -4,14 +4,14 @@ const os = require("os");
 function processError(error) {
   let now = new Date();
   let formatedMessage = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}  ` + error + os.EOL;
-  fs.appendFileSync("data/error/" + now.toDateString() + ".log", formatedMessage);
+  fs.appendFileSync("data/error/" + formatLogFilename(), formatedMessage);
   console.log("\x1b[31m", error);
 }
 
 function writeLog(message, color) {
   let now = new Date();
   let formatedMessage = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}  ` + message + os.EOL;
-  fs.appendFileSync("data/log/" + now.toDateString() + ".log", formatedMessage);
+  fs.appendFileSync("data/log/" + formatLogFilename(), formatedMessage);
   if (color) {
     console.log("\x1b[31m", message);
   } else {
@@ -27,6 +27,13 @@ function makeDir(folder) {
 
 function contentToArrayByLine(content) {
   return content.split(os.EOL);
+}
+
+function formatLogFilename() {
+  let now = new Date();
+  let month = now.getMonth() + 1;
+  month < 10 && (month = `0${month}`);
+  return `${now.getFullYear()}.${month}.${now.getDate()}.log`;
 }
 
 module.exports = {
