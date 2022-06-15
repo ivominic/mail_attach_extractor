@@ -48,9 +48,9 @@ function fileContent(filename, content) {
   let destFilename = "";
 
   if (content) {
+    //fs.appendFileSync(readDirectoryPath + filename + ".txt", content);
     companiesData.forEach((element) => {
       if (element.ziro_racun && element.ziro_racun !== "null") {
-        //TODO: Ovdje pozvati provjere za svaku od banaka i vratiti putanju u koju se prebacuje fajl.
         if (content.indexOf(element.ziro_racun) !== -1 && !destFilename) {
           numberOfMatches++;
           companyName = element.sinonim;

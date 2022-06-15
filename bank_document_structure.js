@@ -56,17 +56,17 @@ function domesticHipotekarna(accountNumber, contentArray) {
   //Not structured pdf correctly. Ask for better file!!!!!!!!!!!!!!!!!!!!!!
   let retVal = "";
   if (contentArray.length < 6) return retVal;
-  let accountPosition = 81;
+  let accountPosition = 60;
   let datePosition = 70;
   let numberPosition = 60;
-  if (contentArray[3].length >= 99 && contentArray[5].length >= 89) {
-    let accountValue = contentArray[3].substring(accountPosition, accountPosition + 18).trim();
-    let dateValue = contentArray[5].substring(datePosition).trim();
-    let numberValue = parseInt(contentArray[5].substring(numberPosition, numberPosition + 5).trim());
-    if (accountNumber === accountValue) {
-      retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
-    }
+  //if (contentArray[3].length >= 99 && contentArray[5].length >= 89) {
+  let accountValue = contentArray[3].substring(accountPosition, accountPosition + 40).trim();
+  let dateValue = contentArray[5].substring(datePosition).trim();
+  let numberValue = parseInt(contentArray[5].substring(numberPosition, numberPosition + 5).trim());
+  if (accountNumber === accountValue) {
+    retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
   }
+  //}
   return retVal;
 }
 
