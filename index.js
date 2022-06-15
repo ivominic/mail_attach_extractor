@@ -2,6 +2,7 @@ const pdfUtil = require("pdf-to-text");
 const fs = require("fs");
 const util = require("./util");
 const bankStructure = require("./bank_document_structure");
+const html_parse = require("./html_parse");
 
 let folderData = JSON.parse(fs.readFileSync("data/json/folders.json", { encoding: "utf8" }));
 
@@ -30,6 +31,14 @@ function readFiles(dirname, onFileContent, onError) {
         pdfUtil.pdfToText(readDirectoryPath + filename, function (err, data) {
           if (err) util.processError(err);
           onFileContent(filename, data);
+        });
+      } else if (filename.toLowerCase().endsWith(".html") || filename.toLowerCase().endsWith(".htm")) {
+        fs.readFile(readDirectoryPath + filename, "utf8", (err, data) => {
+          if (err) {
+            util.processError(err);
+            return;
+          }
+          htmlFileContent(filename, data);
         });
       }
     });
@@ -90,3 +99,43 @@ function moveFiles(sourceDir, destinationDir, destFilename, message) {
   "C:/test/input/Forma Addiko Banka.pdf",
   "C:/test/output/IZVODI Z.R. ELEKTRONSKA ARHIVA 021/027 BP Proing/2022/Domaci/Addiko/555.pdf"
 );*/
+
+function htmlFileContent(filename, content) {
+  console.log(filename);
+  let numberOfMatches = 0;
+  let companyName = "";
+  let companyFolder = "";
+  let companyAccountNumber = "";
+  let multipleCompanyNames = "";
+  let multipleCompanyAccounts = "";
+  let destFilename = "";
+
+  if (content) {
+    //fs.appendFileSync(readDirectoryPath + filename + ".txt", content);
+    companiesData.forEach((element) => {
+      if (element.ziro_racun && element.ziro_racun !== "null") {
+        if (content.indexOf(element.ziro_racun) !== -1 && !destFilename) {
+          numberOfMatches++;
+          companyName = element.sinonim;
+          companyFolder = element.folder;
+          companyAccountNumber = element.ziro_racun;
+          multipleCompanyNames += companyName + ", ";
+          multipleCompanyAccounts += companyAccountNumber + ", ";
+          destFilename = html_parse.findAccountNumberInHtml(element.ziro_racun, content);
+        }
+      }
+    });
+
+    if (destFilename) {
+      let destinationFile = `${writeDirectoryPath}/${companyFolder}/`;
+      let logMessage = `Uspjeh: "${filename}", kompanija: "${companyName}", žiro račun: "${companyAccountNumber}", putanja: "${destinationFile}${destFilename}"`;
+      moveFiles(readDirectoryPath + filename, destinationFile, destFilename, logMessage);
+    } else {
+      let logMessage = `Nije nađen nijedan žiro račun za fajl: "${filename}"`;
+      util.writeLog(logMessage, true);
+    }
+  } else {
+    let logMessage = `Sadržaj fajla: "${filename}" nije pročitan.`;
+    util.writeLog(logMessage, true);
+  }
+}
