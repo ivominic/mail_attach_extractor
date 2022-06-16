@@ -15,7 +15,7 @@ function findAccountNumberInHtml(accountNumber, content) {
 function domesticErste(accountNumber, $) {
   let retVal = "";
   let dateText = $("p").next("p").text();
-  let dateValue = dateText.substring(dateText.length - 12);
+  let dateValue = dateText.substring(dateText.length - 12).trim();
   let accountValue1 = $("table").next("table").next("table").find("tr").find("td").next().html();
   let accountValue2 = $("table").next("table").next("table").find("tr").next().find("td").next().html();
   let numberValue = $("table")
@@ -39,7 +39,7 @@ function domesticErste(accountNumber, $) {
 function foreignErste(accountNumber, $) {
   let retVal = "";
   let dateText = $("p").next("p").text();
-  let dateValue = dateText.substring(dateText.length - 12);
+  let dateValue = dateText.substring(dateText.length - 12).trim();
   let testIban = $("table").next("table").next("table").find("tr").find("td").html();
   if (testIban.trim() !== "IBAN:") return retVal;
   let accountValue1 = $("table").next("table").next("table").find("tr").find("td").next().html();
