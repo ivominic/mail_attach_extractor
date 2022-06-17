@@ -53,20 +53,15 @@ function domesticCKB(accountNumber, contentArray) {
 }
 
 function domesticHipotekarna(accountNumber, contentArray) {
-  //Not structured pdf correctly. Ask for better file!!!!!!!!!!!!!!!!!!!!!!
   let retVal = "";
   if (contentArray.length < 6) return retVal;
-  let accountPosition = 60;
-  let datePosition = 70;
-  let numberPosition = 60;
-  //if (contentArray[3].length >= 99 && contentArray[5].length >= 89) {
-  let accountValue = contentArray[3].substring(accountPosition, accountPosition + 40).trim();
-  let dateValue = contentArray[5].substring(datePosition).trim();
-  let numberValue = parseInt(contentArray[5].substring(numberPosition, numberPosition + 5).trim());
-  if (accountNumber === accountValue) {
+  let accountValue = contentArray[3].trim().split(" ")[0];
+  let numberDateArray = contentArray[5].trim().split(" ");
+  let dateValue = numberDateArray[numberDateArray.length - 1];
+  let numberValue = parseInt(numberDateArray[0]);
+  if (accountNumber === accountValue && accountValue.length === 18 && dateValue && numberValue) {
     retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
   }
-  //}
   return retVal;
 }
 
@@ -153,13 +148,14 @@ function foreignCKB(accountNumber, contentArray) {
 }
 
 function foreignHipotekarna(accountNumber, contentArray) {
-  //Not structured pdf correctly. Ask for better file!!!!!!!!!!!!!!!!!!!!!!
   let retVal = "";
   if (contentArray.length < 9) return retVal;
-  let accountValue = contentArray[3].substring(95).trim();
-  let numberValue = parseInt(contentArray[2].substring(123).trim());
-  let dateValue = contentArray[8].substring(120).trim();
-  if (accountNumber === accountValue && dateValue && numberValue) {
+  let accountValue = contentArray[3].trim().split(" ")[0];
+  let dateArray = contentArray[8].trim().split(" ");
+  let dateValue = dateArray[dateArray.length - 1];
+  let numberArray = contentArray[2].trim().split(" ");
+  let numberValue = parseInt(numberArray[numberArray.length - 1]);
+  if (accountNumber === accountValue && accountValue.length === 27 && dateValue && numberValue) {
     retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
   }
   return retVal;
