@@ -864,6 +864,22 @@
     "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/104. Casa Del Mobile/DOMACI"
   },
   {
+    "firma": "105",
+    "sinonim": "Preduzetnik Anna Korotkova",
+    "maticni_broj": "1512992218015",
+    "tip": "DOMACI",
+    "ziro_racun": "520000000004391071",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/105. Preduzetnik Anna Korotkova/DOMACI"
+  },
+  {
+    "firma": "106",
+    "sinonim": "NVO Trening Centar Taraba",
+    "maticni_broj": "11006841",
+    "tip": "DOMACI",
+    "ziro_racun": null,
+    "folder": null
+  },
+  {
     "firma": "001",
     "sinonim": "Novosti Pres",
     "maticni_broj": "02329891",
@@ -932,8 +948,8 @@
     "sinonim": "Zeko.Me d.o.o.",
     "maticni_broj": "02862751",
     "tip": "DEVIZNI",
-    "ziro_racun": "ME25510000000006420082",
-    "folder": "IZVODI Z.R ELEKTRONSKA ARHIVA/009 Zeko.Me/2022/Devizni"
+    "ziro_racun": null,
+    "folder": null
   },
   {
     "firma": "010",
@@ -1028,8 +1044,8 @@
     "sinonim": "Penguin EU",
     "maticni_broj": "03290824",
     "tip": "DEVIZNI",
-    "ziro_racun": "ME25575015010000679293",
-    "folder": "IZVODI Z.R. ELEKTRONSKA ARHIVA 021/023 Penguin EU/2022/DEVIZNI"
+    "ziro_racun": null,
+    "folder": null
   },
   {
     "firma": "024",
@@ -1194,7 +1210,7 @@
   {
     "firma": "045",
     "sinonim": "Advokat Radonjic",
-    "maticni_broj": "18069822",
+    "maticni_broj": "1806982215011",
     "tip": "DEVIZNI",
     "ziro_racun": null,
     "folder": null
@@ -1284,7 +1300,7 @@
     "sinonim": "Preduzetnik Mario Erceg",
     "maticni_broj": "03329917",
     "tip": "DEVIZNI",
-    "ziro_racun": "ME25520042000001403893",
+    "ziro_racun": "420-0107-520042000001403893",
     "folder": "IZVODI Z.R. ELEKTRONSKA ARHIVA 021/056.Preduzetnik Mario Erceg/2022/Devizni"
   },
   {
@@ -1596,7 +1612,7 @@
     "sinonim": "CK Groiup Investment D.O.O.",
     "maticni_broj": "03390373",
     "tip": "DEVIZNI",
-    "ziro_racun": "232500",
+    "ziro_racun": "420-0100-580420000000092387",
     "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/099. CK Group Investments/2022/DEVIZNI"
   },
   {
@@ -1638,5 +1654,117 @@
     "tip": "DEVIZNI",
     "ziro_racun": "ME25510000000016016195",
     "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/104. Casa Del Mobile/DEVIZNI"
+  },
+  {
+    "firma": "105",
+    "sinonim": "Preduzetnik Anna Korotkova",
+    "maticni_broj": "1512992218015",
+    "tip": "DEVIZNI",
+    "ziro_racun": null,
+    "folder": null
+  },
+  {
+    "firma": "106",
+    "sinonim": "NVO Trening Centar Taraba",
+    "maticni_broj": "11006841",
+    "tip": "DEVIZNI",
+    "ziro_racun": null,
+    "folder": null
+  },
+  {
+    "firma": "009",
+    "sinonim": "Zeko.Me d.o.o.",
+    "maticni_broj": "02862751",
+    "tip": "PLATNE KARTICE",
+    "ziro_racun": "520004000000493993",
+    "folder": "IZVODI Z.R ELEKTRONSKA ARHIVA/009 Zeko.Me/2022/Platne kartice"
+  },
+  {
+    "firma": "027",
+    "sinonim": "BP Pro Ing",
+    "maticni_broj": "03067491",
+    "tip": "PLATNE KARTICE",
+    "ziro_racun": "520040000000452035",
+    "folder": "IZVODI Z.R. ELEKTRONSKA ARHIVA 021/027 BP Proing/2022/Platne kartice"
+  },
+  {
+    "firma": "035",
+    "sinonim": "Frigo Electronics",
+    "maticni_broj": "03177149",
+    "tip": "PLATNE KARTICE",
+    "ziro_racun": "520004000000284958",
+    "folder": "IZVODI Z.R. ELEKTRONSKA ARHIVA 021/035 Frigo Electronics/2022/Platne kartice"
+  },
+  {
+    "firma": "037",
+    "sinonim": "Biznis Andjeo",
+    "maticni_broj": "03162664",
+    "tip": "DOMACI",
+    "ziro_racun": "520004000000257604",
+    "folder": "IZVODI Z.R. ELEKTRONSKA ARHIVA 021/037 Biznis Andjeo izvodi/2022/PLATNE KARTICE"
+  },
+  {
+    "firma": "039",
+    "sinonim": "Karika Tech",
+    "maticni_broj": "03203506",
+    "tip": "DOMACI",
+    "ziro_racun": "520004000000457424",
+    "folder": "IZVODI Z.R. ELEKTRONSKA ARHIVA 021/039 Karika Tech/2022/Platne kartice"
+  },
+  {
+    "firma": "061",
+    "sinonim": "Gradac",
+    "maticni_broj": "02735644",
+    "tip": "DOMACI",
+    "ziro_racun": "520040000000106327",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/061.Gradac/2022/Platne kartice"
+  },
+  {
+    "firma": "062",
+    "sinonim": "Granat Consulting  Solutions",
+    "maticni_broj": "03295621",
+    "tip": "DOMACI",
+    "ziro_racun": "520004000000074856",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/062. Granat Consulting&Solutions/2022/Platne kartice"
+  },
+  {
+    "firma": "069",
+    "sinonim": "Lovcen Lift",
+    "maticni_broj": "03343073",
+    "tip": "DOMACI",
+    "ziro_racun": "520004000000127818",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/069. Lovcen Lift/2022/Platne kartice"
+  },
+  {
+    "firma": "071",
+    "sinonim": "Mahna Mahna",
+    "maticni_broj": "02950456",
+    "tip": "DOMACI",
+    "ziro_racun": "520040000000113214",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/071. Mahna Mahna/2022/Platna kartica"
+  },
+  {
+    "firma": "075",
+    "sinonim": "Dalla Nonna",
+    "maticni_broj": "03151115",
+    "tip": "DOMACI",
+    "ziro_racun": "520040000000611212",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/075.Dalla Nona/2022/Platne kartice"
+  },
+  {
+    "firma": "081",
+    "sinonim": "Ragbi Savez Crne Gore",
+    "maticni_broj": "11073867",
+    "tip": "DOMACI",
+    "ziro_racun": "520004000000492538",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/081.Ragbi Savez CG Izvodi/2022/PLATNE KARTICE"
+  },
+  {
+    "firma": "095",
+    "sinonim": "Golf Scape",
+    "maticni_broj": "03402185",
+    "tip": "DOMACI",
+    "ziro_racun": "520040000000533224",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/095.Golf Scape/PLATNE KARTICE"
   }
 ]

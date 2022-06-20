@@ -95,11 +95,6 @@ function moveFiles(sourceDir, destinationDir, destFilename, message) {
   }
 }
 
-/*moveFiles(
-  "C:/test/input/Forma Addiko Banka.pdf",
-  "C:/test/output/IZVODI Z.R. ELEKTRONSKA ARHIVA 021/027 BP Proing/2022/Domaci/Addiko/555.pdf"
-);*/
-
 function htmlFileContent(filename, content) {
   console.log(filename);
   let numberOfMatches = 0;
