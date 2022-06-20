@@ -9,6 +9,7 @@ function findAccountNumberInSpecificLine(accountNumber, content) {
   !filename && (filename = domesticHipotekarna(accountNumber, contentArray));
   !filename && (filename = domesticLovcen(accountNumber, contentArray));
   !filename && (filename = domesticNLB(accountNumber, contentArray));
+  !filename && (filename = domesticNLB2(accountNumber, contentArray));
   !filename && (filename = domesticZapad(accountNumber, contentArray));
   !filename && (filename = domesticZiirat(accountNumber, contentArray));
   !filename && (filename = foreignAdriatic(accountNumber, contentArray));
@@ -150,6 +151,20 @@ function domesticNLB(accountNumber, contentArray) {
   if (accountValue === accountNumber && datePosition >= 6 && numberPosition >= 10 && accountValue.length <= 13) {
     let dateValue = contentArray[1].substring(datePosition).trim();
     let numberValue = parseInt(contentArray[0].substring(numberPosition).trim());
+    retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
+  }
+  return retVal;
+}
+
+function domesticNLB2(accountNumber, contentArray) {
+  let retVal = "";
+  if (contentArray.length < 20) return retVal;
+  let numberArray = contentArray[16].trim().split(" ");
+  let numberValue = parseInt(numberArray[numberArray.length - 1]);
+  let dateRow = contentArray[17].trim();
+  let dateValue = dateRow.substring(dateRow.length - 21, dateRow.length - 10).trim();
+  let accountValue = contentArray[19].substring(contentArray[19].length - 20, contentArray[19].length).trim();
+  if (accountValue === accountNumber && accountValue.length <= 21 && numberValue && dateValue) {
     retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
   }
   return retVal;
