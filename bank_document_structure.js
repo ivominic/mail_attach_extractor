@@ -4,6 +4,7 @@ function findAccountNumberInSpecificLine(accountNumber, content) {
   let contentArray = util.contentToArrayByLine(content);
   let filename = "";
   !filename && (filename = domesticAddiko(accountNumber, contentArray));
+  !filename && (filename = domesticAdriatic(accountNumber, contentArray));
   !filename && (filename = domesticCKB(accountNumber, contentArray));
   !filename && (filename = domesticHipotekarna(accountNumber, contentArray));
   !filename && (filename = domesticLovcen(accountNumber, contentArray));
@@ -38,9 +39,23 @@ function domesticAddiko(accountNumber, contentArray) {
     let accountValue = contentArray[8].substring(accountPosition, accountPosition + 18).trim();
     let dateValue = contentArray[9].substring(datePosition, datePosition + 10).trim();
     let numberValue = parseInt(contentArray[8].substring(numberPosition, numberPosition + 3).trim());
-    if (accountNumber === accountValue && accountValue.length === 17) {
+    if (accountNumber === accountValue && accountValue.length <= 18) {
       retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
     }
+  }
+  return retVal;
+}
+
+function domesticAdriatic(accountNumber, contentArray) {
+  let retVal = "";
+  if (contentArray.length < 9) return retVal;
+  let accountValue = contentArray[3].trim().split(" ")[0];
+  let dateArray = contentArray[6].trim().split(" ");
+  let dateValue = dateArray[dateArray.length - 1];
+  let numberArray = contentArray[2].trim().split(" ");
+  let numberValue = parseInt(numberArray[numberArray.length - 1]);
+  if (accountNumber === accountValue && accountValue.length <= 18 && dateValue && numberValue) {
+    retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
   }
   return retVal;
 }
@@ -55,7 +70,7 @@ function domesticCKB(accountNumber, contentArray) {
     let accountValue = contentArray[0].substring(accountPosition, accountPosition + 18).trim();
     let dateValue = contentArray[0].substring(datePosition, datePosition + 10).trim();
     let numberValue = parseInt(contentArray[0].substring(numberPosition, numberPosition + 3).trim());
-    if (accountNumber === accountValue && accountValue.length === 18) {
+    if (accountNumber === accountValue && accountValue.length <= 18) {
       retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
     }
   }
@@ -69,7 +84,7 @@ function domesticHipotekarna(accountNumber, contentArray) {
   let numberDateArray = contentArray[5].trim().split(" ");
   let dateValue = numberDateArray[numberDateArray.length - 1];
   let numberValue = parseInt(numberDateArray[0]);
-  if (accountNumber === accountValue && accountValue.length === 18 && dateValue && numberValue) {
+  if (accountNumber === accountValue && accountValue.length <= 18 && dateValue && numberValue) {
     retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
   }
   return retVal;
@@ -85,7 +100,7 @@ function domesticLovcen(accountNumber, contentArray) {
     let accountValue = contentArray[13].substring(accountPosition, accountPosition + 40).trim();
     let dateValue = contentArray[10].substring(datePosition).trim();
     let numberValue = parseInt(contentArray[9].substring(numberPosition).trim());
-    if (accountNumber === accountValue && accountValue.length === 8) {
+    if (accountNumber === accountValue && accountValue.length <= 8) {
       retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
     }
   }
@@ -102,7 +117,7 @@ function domesticZapad(accountNumber, contentArray) {
     let accountValue = contentArray[4].substring(accountPosition, accountPosition + 40).trim();
     let dateValue = contentArray[2].substring(datePosition).trim();
     let numberValue = parseInt(contentArray[0].substring(numberPosition).trim());
-    if (accountNumber === accountValue && accountValue.length === 17) {
+    if (accountNumber === accountValue && accountValue.length <= 18) {
       retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
     }
   }
@@ -119,7 +134,7 @@ function domesticZiirat(accountNumber, contentArray) {
     let accountValue = contentArray[4].substring(accountPosition, accountPosition + 30).trim();
     let dateValue = contentArray[1].substring(datePosition).trim();
     let numberValue = parseInt(contentArray[0].substring(numberPosition).trim());
-    if (accountNumber === accountValue && accountValue.length === 20) {
+    if (accountNumber === accountValue && accountValue.length <= 20) {
       retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
     }
   }
