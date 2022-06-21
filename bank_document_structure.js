@@ -265,12 +265,6 @@ function payCardHipotekarna(accountNumber, contentArray) {
   let otherData = contentArray[5].substring(40, 74).trim();
   let dateValue = otherData.substring(otherData.length - 8, otherData.length - 1);
   let numberValue = parseInt(otherData.substring(0, 3));
-  console.log("AAAA", accountValue);
-  console.log("BBBB", otherData);
-  console.log("acc_orig", accountNumber);
-  console.log("acc", accountValue);
-  console.log("date", dateValue);
-  console.log("number", numberValue);
   if (accountNumber === accountValue && accountValue.length === 18 && dateValue && numberValue) {
     retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
   }
