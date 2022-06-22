@@ -43,6 +43,11 @@ function readFiles(dirname, onFileContent, onError) {
       }
     });
   });
+
+  //This should be in promise.then, to prevent exiting app before key press
+  process.stdin.setRawMode(true);
+  process.stdin.resume();
+  process.stdin.on("data", process.exit.bind(process, 0));
 }
 
 readFiles(readDirectoryPath, fileContent, util.processError);
