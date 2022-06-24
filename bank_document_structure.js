@@ -242,14 +242,22 @@ function foreignNLB(accountNumber, contentArray) {
 
 function foreignZiirat(accountNumber, contentArray) {
   let retVal = "";
-  if (contentArray.length < 27) return retVal;
+  if (contentArray.length < 30) return retVal;
   let accountPosition = contentArray[6].indexOf("Račun: ") + 7;
   let accountValue = contentArray[6].substring(accountPosition, accountPosition + 30).trim();
+  if (accountPosition === 6) {
+    accountValue = contentArray[6].trim();
+  }
   if (accountValue !== accountNumber) {
     accountValue = contentArray[7].trim();
   }
-  let dateValue = contentArray[26].substring(40, 55).trim();
-  let numberValue = parseInt(contentArray[0].substring(55, 58).trim());
+  let dateVal1 = contentArray[26].substring(38, 55).trim();
+  let dateVal2 = contentArray[27].substring(38, 55).trim();
+  let dateVal3 = contentArray[28].substring(38, 55).trim();
+  let dateVal4 = contentArray[29].substring(38, 55).trim();
+  let dateValue = checkDate(dateVal1) || checkDate(dateVal2) || checkDate(dateVal3) || checkDate(dateVal4);
+  let rowLength = contentArray[0].trim().length;
+  let numberValue = contentArray[0].trim().substring(rowLength - 8, rowLength - 5);
   if (accountValue && dateValue && numberValue) {
     if (accountNumber === accountValue && accountValue.length === 22) {
       retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
@@ -274,6 +282,12 @@ function payCardHipotekarna(accountNumber, contentArray) {
 function formatNumber(number) {
   let value = `00${number}`;
   return value.substring(value.length - 3, value.length);
+}
+
+function checkDate(date) {
+  const re = /^(\d{2}\.\d{2}\.\d{4})/;
+  let m = re.exec(date);
+  return m && m[0];
 }
 
 module.exports = {
