@@ -688,6 +688,14 @@
     "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/081.Ragbi Savez CG Izvodi/2022/DOMACI"
   },
   {
+    "firma": "081",
+    "sinonim": "Ragbi Savez Crne Gore",
+    "maticni_broj": "11073867",
+    "tip": "DOMACI",
+    "ziro_racun": "520000000004429483",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/081.Ragbi Savez CG Izvodi/2022/DOMACI/HIPOTEKARNA 2"
+  },
+  {
     "firma": "082",
     "sinonim": "Krann d.o.o. Podgorica",
     "maticni_broj": "03373371",
@@ -1668,8 +1676,8 @@
     "sinonim": "NVO Trening Centar Taraba",
     "maticni_broj": "11006841",
     "tip": "DEVIZNI",
-    "ziro_racun": null,
-    "folder": null
+    "ziro_racun": "420-0105-520042000000526528",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/106. NVO Taraba/2022/DEVIZNI"
   },
   {
     "firma": "009",

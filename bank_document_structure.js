@@ -10,6 +10,7 @@ function findAccountNumberInSpecificLine(accountNumber, content) {
   !filename && (filename = domesticLovcen(accountNumber, contentArray));
   !filename && (filename = domesticNLB(accountNumber, contentArray));
   !filename && (filename = domesticNLB2(accountNumber, contentArray));
+  !filename && (filename = domesticPrvaBanka(accountNumber, contentArray));
   !filename && (filename = domesticZapad(accountNumber, contentArray));
   !filename && (filename = domesticZiirat(accountNumber, contentArray));
   !filename && (filename = foreignAdriatic(accountNumber, contentArray));
@@ -102,7 +103,24 @@ function domesticLovcen(accountNumber, contentArray) {
     let accountValue = contentArray[13].substring(accountPosition, accountPosition + 40).trim();
     let dateValue = contentArray[10].substring(datePosition).trim();
     let numberValue = parseInt(contentArray[9].substring(numberPosition).trim());
-    if (accountNumber === accountValue && accountValue.length <= 8) {
+    if (accountNumber === accountValue && accountValue.length <= 11 && dateValue.length === 10) {
+      retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
+    }
+  }
+  return retVal;
+}
+
+function domesticPrvaBanka(accountNumber, contentArray) {
+  let retVal = "";
+  if (contentArray.length < 14) return retVal;
+  let accountPosition = contentArray[13].indexOf("Račun: ") + 7;
+  let datePosition = contentArray[13].trim().split(" ");
+  let numberPosition = contentArray[7].trim().split(" ");
+  if (accountPosition >= 7) {
+    let accountValue = contentArray[13].substring(accountPosition, accountPosition + 40).trim();
+    let dateValue = datePosition[datePosition.length - 1];
+    let numberValue = parseInt(numberPosition[numberPosition.length - 1]);
+    if (accountNumber === accountValue && accountValue.length <= 12 && dateValue.length === 10) {
       retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
     }
   }
