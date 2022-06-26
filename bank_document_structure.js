@@ -178,11 +178,14 @@ function domesticNLB(accountNumber, contentArray) {
 function domesticNLB2(accountNumber, contentArray) {
   let retVal = "";
   if (contentArray.length < 20) return retVal;
-  let numberArray = contentArray[16].trim().split(" ");
-  let numberValue = parseInt(numberArray[numberArray.length - 1]);
-  let dateRow = contentArray[17].trim();
-  let dateValue = dateRow.substring(dateRow.length - 21, dateRow.length - 10).trim();
-  let accountValue = contentArray[19].substring(contentArray[19].length - 20, contentArray[19].length).trim();
+  let accountPosition = contentArray[0].trim().split(" ");
+  let accountValue = accountPosition[accountPosition.length - 1];
+  let numberValue = accountPosition[accountPosition.length - 3];
+  let dateRow1 = contentArray[16].trim();
+  let dateRow2 = contentArray[17].trim();
+  let dateVal1 = dateRow1.substring(dateRow1.length - 21, dateRow1.length - 10).trim();
+  let dateVal2 = dateRow2.substring(dateRow2.length - 21, dateRow2.length - 10).trim();
+  let dateValue = checkDate(dateVal1) || checkDate(dateVal2);
   if (accountValue === accountNumber && accountValue.length <= 21 && numberValue && dateValue) {
     retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
   }
