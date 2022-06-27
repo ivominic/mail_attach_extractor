@@ -62,7 +62,7 @@ function fileContent(filename, content) {
   let destFilename = "";
 
   if (content) {
-    fs.appendFileSync(readDirectoryPath + filename + ".txt", content);
+    //fs.appendFileSync(readDirectoryPath + filename + ".txt", content);
     companiesData.forEach((element) => {
       if (element.ziro_racun && element.ziro_racun !== "null") {
         if (content.indexOf(element.ziro_racun) !== -1 && !destFilename) {

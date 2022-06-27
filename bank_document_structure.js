@@ -76,7 +76,7 @@ function domesticHipotekarna(accountNumber, contentArray) {
   let accountValue = contentArray[3].trim().split(" ")[0];
   let numberDate = contentArray[5].trim();
   let numberDateArray = contentArray[5].trim().split(" ");
-  let dateValue = checkDate(numberDate.substring(7, 40).trim());
+  let dateValue = checkDate(numberDate.substring(4, 40).trim());
   let numberValue = parseInt(numberDateArray[0]);
   if (accountNumber === accountValue && accountValue.length <= 18 && dateValue && numberValue) {
     retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
@@ -216,9 +216,12 @@ function foreignCKB(accountNumber, contentArray) {
 
 function foreignHipotekarna(accountNumber, contentArray) {
   let retVal = "";
-  if (contentArray.length < 9) return retVal;
-  let accountValue = contentArray[3].trim().split(" ")[0];
-  let dateArray = contentArray[8].trim().split(" ");
+  if (contentArray.length < 11) return retVal;
+  let accountArray = contentArray[4].trim().split(" ");
+  //let accountValue = contentArray[3].trim().split(" ")[0];
+  let accountValue = accountArray[accountArray.length - 1];
+  //let dateArray = contentArray[8].trim().split(" ");
+  let dateArray = contentArray[10].trim().split(" ");
   let dateValue = checkDate(dateArray[dateArray.length - 1]);
   let numberArray = contentArray[2].trim().split(" ");
   let numberValue = parseInt(numberArray[numberArray.length - 1]);
