@@ -16,6 +16,7 @@ function findAccountNumberInSpecificLine(accountNumber, content) {
   !filename && (filename = foreignAdriatic(accountNumber, contentArray));
   !filename && (filename = foreignCKB(accountNumber, contentArray));
   !filename && (filename = foreignHipotekarna(accountNumber, contentArray));
+  !filename && (filename = foreignHipotekarna2(accountNumber, contentArray));
   !filename && (filename = foreignLovcen(accountNumber, contentArray));
   !filename && (filename = foreignNLB(accountNumber, contentArray));
   !filename && (filename = foreignZiirat(accountNumber, contentArray));
@@ -222,6 +223,20 @@ function foreignHipotekarna(accountNumber, contentArray) {
   let accountValue = accountArray[accountArray.length - 1];
   //let dateArray = contentArray[8].trim().split(" ");
   let dateArray = contentArray[10].trim().split(" ");
+  let dateValue = checkDate(dateArray[dateArray.length - 1]);
+  let numberArray = contentArray[2].trim().split(" ");
+  let numberValue = parseInt(numberArray[numberArray.length - 1]);
+  if (accountNumber === accountValue && accountValue.length === 27 && dateValue && numberValue) {
+    retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
+  }
+  return retVal;
+}
+
+function foreignHipotekarna2(accountNumber, contentArray) {
+  let retVal = "";
+  if (contentArray.length < 11) return retVal;
+  let accountValue = contentArray[3].trim().split(" ")[0];
+  let dateArray = contentArray[8].trim().split(" ");
   let dateValue = checkDate(dateArray[dateArray.length - 1]);
   let numberArray = contentArray[2].trim().split(" ");
   let numberValue = parseInt(numberArray[numberArray.length - 1]);
