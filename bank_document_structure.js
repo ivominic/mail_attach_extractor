@@ -281,10 +281,10 @@ function foreignZiirat(accountNumber, contentArray) {
   if (accountValue !== accountNumber) {
     accountValue = contentArray[7].trim();
   }
-  let dateVal1 = contentArray[26].substring(38, 55).trim();
-  let dateVal2 = contentArray[27].substring(38, 55).trim();
-  let dateVal3 = contentArray[28].substring(38, 55).trim();
-  let dateVal4 = contentArray[29].substring(38, 55).trim();
+  let dateVal1 = contentArray[26].substring(34, 55).trim();
+  let dateVal2 = contentArray[27].substring(34, 55).trim();
+  let dateVal3 = contentArray[28].substring(34, 55).trim();
+  let dateVal4 = contentArray[29].substring(34, 55).trim();
   let dateValue = checkDate(dateVal1) || checkDate(dateVal2) || checkDate(dateVal3) || checkDate(dateVal4);
   let rowLength = contentArray[0].trim().length;
   let numberValue = contentArray[0].trim().substring(rowLength - 8, rowLength - 5);
