@@ -60,12 +60,14 @@ function fileContent(filename, content) {
   let multipleCompanyNames = "";
   let multipleCompanyAccounts = "";
   let destFilename = "";
+  let isAccountFound = false;
 
   if (content) {
     //fs.appendFileSync(readDirectoryPath + filename + ".txt", content);
     companiesData.forEach((element) => {
       if (element.ziro_racun && element.ziro_racun !== "null") {
         if (content.indexOf(element.ziro_racun) !== -1 && !destFilename) {
+          isAccountFound = true;
           numberOfMatches++;
           companyName = element.sinonim;
           companyFolder = element.folder;
@@ -83,6 +85,9 @@ function fileContent(filename, content) {
       moveFiles(readDirectoryPath + filename, destinationFile, destFilename, logMessage);
     } else {
       let logMessage = `Nije nađen nijedan žiro račun za fajl: "${filename}"`;
+      if (!isAccountFound) {
+        logMessage += " - Ne postoji broj računa u bazi.";
+      }
       util.writeLog(logMessage, true);
     }
   } else {

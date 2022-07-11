@@ -315,8 +315,9 @@ function payCardHipotekarna(accountNumber, contentArray) {
   let retVal = "";
   if (contentArray.length < 6) return retVal;
   let accountValue = contentArray[3].substring(49, 95).trim().split(" ")[0];
-  let otherData = contentArray[5].substring(40, 74).trim();
-  let dateValue = checkDate(otherData.substring(otherData.length - 8, otherData.length - 1));
+  //let otherData = contentArray[5].substring(40, 77).trim();
+  let otherData = contentArray[5].substring(40, 80).trim();
+  let dateValue = checkShortDate(otherData.substring(otherData.length - 8, otherData.length - 1));
   let numberValue = parseInt(otherData.substring(0, 3));
   if (accountNumber === accountValue && accountValue.length === 18 && dateValue && numberValue) {
     retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
@@ -331,6 +332,12 @@ function formatNumber(number) {
 
 function checkDate(date) {
   const re = /^(\d{2}\.\d{2}\.\d{4})/;
+  let m = re.exec(date);
+  return m && m[0];
+}
+
+function checkShortDate(date) {
+  const re = /^(\d{2}\.\d{4})/;
   let m = re.exec(date);
   return m && m[0];
 }
