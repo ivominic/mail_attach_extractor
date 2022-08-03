@@ -88,17 +88,15 @@ function domesticHipotekarna(accountNumber, contentArray) {
 
 function domesticLovcen(accountNumber, contentArray) {
   let retVal = "";
-  if (contentArray.length < 14) return retVal;
-  let accountPosition = contentArray[13].indexOf("Račun: ") + 7;
-  let datePosition = contentArray[10].indexOf("Datum:") + 6;
-  let numberPosition = contentArray[9].indexOf("Izvod broj:") + 11;
-  if (accountPosition >= 7 && datePosition >= 6 && numberPosition >= 11) {
-    let accountValue = contentArray[13].substring(accountPosition, accountPosition + 40).trim();
-    let dateValue = checkDate(contentArray[10].substring(datePosition).trim());
-    let numberValue = parseInt(contentArray[9].substring(numberPosition).trim());
-    if (accountNumber === accountValue && accountValue.length <= 11 && dateValue.length === 10) {
-      retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
-    }
+  if (contentArray.length < 7) return retVal;
+  let accountValue = contentArray[3].trim();
+  let numberValue = contentArray[2].substring(-3);
+  let dateValue = contentArray[6].substring(-10);
+  console.log("AAAa", accountValue);
+  console.log("AAAa", numberValue);
+  console.log("AAAa", dateValue);
+  if (accountNumber === accountValue && accountValue.length <= 18 && dateValue.length === 10) {
+    retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
   }
   return retVal;
 }
