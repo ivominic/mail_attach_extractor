@@ -360,6 +360,14 @@
     "folder": "IZVODI Z.R. ELEKTRONSKA ARHIVA 021/042 Aspirano/2022/Domaci"
   },
   {
+    "firma": "042",
+    "sinonim": "Aspirano",
+    "maticni_broj": "03109569",
+    "tip": "DOMACI",
+    "ziro_racun": "520000000004394272",
+    "folder": "IZVODI Z.R. ELEKTRONSKA ARHIVA 021/042 Aspirano/2022/Domaci/HIPOTEKARNA"
+  },
+  {
     "firma": "043",
     "sinonim": "Sprint Group",
     "maticni_broj": "03220095",
@@ -596,7 +604,7 @@
     "sinonim": "Mahna Mahna",
     "maticni_broj": "02950456",
     "tip": "DOMACI",
-    "ziro_racun": "565-180-32",
+    "ziro_racun": "565000000000018032",
     "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/071. Mahna Mahna/2022/Domaci/Lovcen banka"
   },
   {
@@ -740,7 +748,7 @@
     "sinonim": "Medusa Company doo",
     "maticni_broj": "03392465",
     "tip": "DOMACI",
-    "ziro_racun": "565-9303-17",
+    "ziro_racun": "565000000000930317",
     "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/086.Medusa Company/2022/DOMACI/LOVCEN"
   },
   {
@@ -756,8 +764,8 @@
     "sinonim": "MRC Construction d.o.o.",
     "maticni_broj": "03400492",
     "tip": "DOMACI",
-    "ziro_racun": "575-0000000000799-53",
-    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/088. MRC Construction/2022/DOMACI"
+    "ziro_racun": null,
+    "folder": null
   },
   {
     "firma": "089",
@@ -816,12 +824,20 @@
     "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/097. Larish/2022/DOMACI"
   },
   {
+    "firma": "097",
+    "sinonim": "Larish d.o.o.",
+    "maticni_broj": "03209636",
+    "tip": "DOMACI",
+    "ziro_racun": "520000000004303480",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/097. Larish/2022/DOMACI/HIPOTEKARNA"
+  },
+  {
     "firma": "098",
     "sinonim": "Maslinjaci Baletic doo",
     "maticni_broj": "03408809",
     "tip": "DOMACI",
     "ziro_racun": "520000000004387676",
-    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/098. Maslinjaci Baletic/2022/DOMACI"
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/098. Maslinjaci Baletic izvodi/2022/DOMACI"
   },
   {
     "firma": "099",
@@ -837,7 +853,7 @@
     "maticni_broj": "03066371",
     "tip": "DOMACI",
     "ziro_racun": "510000000009231918",
-    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/100. Penelope/2022/Domaci"
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/100. Penelope izvodi/2022/Domaci"
   },
   {
     "firma": "101",
@@ -869,7 +885,7 @@
     "maticni_broj": "03428001",
     "tip": "DOMACI",
     "ziro_racun": "510000000016016195",
-    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/104. Casa Del Mobile/DOMACI"
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/104. Casa Del Mobile izvodi/DOMACI"
   },
   {
     "firma": "105",
@@ -884,8 +900,8 @@
     "sinonim": "NVO Trening Centar Taraba",
     "maticni_broj": "11006841",
     "tip": "DOMACI",
-    "ziro_racun": null,
-    "folder": null
+    "ziro_racun": "520000000000524360",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/106. NVO Taraba/2022/DOMACI"
   },
   {
     "firma": "001",
@@ -1532,8 +1548,16 @@
     "sinonim": "Medusa Company doo",
     "maticni_broj": "03392465",
     "tip": "DEVIZNI",
-    "ziro_racun": "0750100044535",
+    "ziro_racun": "565075010004453535",
     "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/086.Medusa Company/2022/DEVIZNI"
+  },
+  {
+    "firma": "086",
+    "sinonim": "Medusa Company doo",
+    "maticni_broj": "03392465",
+    "tip": "DEVIZNI",
+    "ziro_racun": "420-0710-520042000001776955",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/086.Medusa Company/2022/DEVIZNI/HIPOTEKARNA"
   },
   {
     "firma": "087",
@@ -1766,6 +1790,14 @@
     "tip": "DOMACI",
     "ziro_racun": "520004000000492538",
     "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/081.Ragbi Savez CG Izvodi/2022/PLATNE KARTICE"
+  },
+  {
+    "firma": "085",
+    "sinonim": "Underhill  Software Solutions doo",
+    "maticni_broj": "03404919",
+    "tip": "DOMACI",
+    "ziro_racun": "520040000000688715",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/085.Underhill Software Solutions/2022/PLATNE KARTICE"
   },
   {
     "firma": "095",

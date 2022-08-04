@@ -90,11 +90,8 @@ function domesticLovcen(accountNumber, contentArray) {
   let retVal = "";
   if (contentArray.length < 7) return retVal;
   let accountValue = contentArray[3].trim();
-  let numberValue = contentArray[2].substring(-3);
-  let dateValue = contentArray[6].substring(-10);
-  console.log("AAAa", accountValue);
-  console.log("AAAa", numberValue);
-  console.log("AAAa", dateValue);
+  let numberValue = contentArray[2].trim().substring(contentArray[2].trim().length - 3);
+  let dateValue = contentArray[6].trim().substring(contentArray[6].trim().length - 10);
   if (accountNumber === accountValue && accountValue.length <= 18 && dateValue.length === 10) {
     retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
   }
