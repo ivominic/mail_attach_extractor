@@ -22,6 +22,9 @@ function findAccountNumberInSpecificLine(accountNumber, content) {
   !filename && (filename = foreignNLB(accountNumber, contentArray));
   !filename && (filename = foreignZiirat(accountNumber, contentArray));
   !filename && (filename = payCardHipotekarna(accountNumber, contentArray));
+  !filename && (filename = payCardHipotekarna2(accountNumber, contentArray));
+  !filename && (filename = payCardHipotekarna3(accountNumber, contentArray));
+  !filename && (filename = payCardHipotekarna4(accountNumber, contentArray));
   return filename;
 }
 
@@ -311,6 +314,47 @@ function payCardHipotekarna(accountNumber, contentArray) {
   if (contentArray.length < 6) return retVal;
   let accountValue = contentArray[3].substring(49, 95).trim().split(" ")[0];
   //let otherData = contentArray[5].substring(40, 77).trim();
+  let otherData = contentArray[5].substring(40, 80).trim();
+  let dateValue = checkShortDate(otherData.substring(otherData.length - 8, otherData.length - 1));
+  let numberValue = parseInt(otherData.substring(0, 3));
+  if (accountNumber === accountValue && accountValue.length === 18 && dateValue && numberValue) {
+    retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
+  }
+  return retVal;
+}
+
+function payCardHipotekarna2(accountNumber, contentArray) {
+  let retVal = "";
+  if (contentArray.length < 6) return retVal;
+  let accountValue = contentArray[3].substring(44, 95).trim().split(" ")[0];
+  //let otherData = contentArray[5].substring(40, 77).trim();
+  let otherData = contentArray[5].substring(40, 80).trim();
+  let dateValue = checkShortDate(otherData.substring(otherData.length - 8, otherData.length - 1));
+  let numberValue = parseInt(otherData.substring(0, 3));
+  if (accountNumber === accountValue && accountValue.length === 18 && dateValue && numberValue) {
+    retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
+  }
+  return retVal;
+}
+
+function payCardHipotekarna3(accountNumber, contentArray) {
+  let retVal = "";
+  if (contentArray.length < 6) return retVal;
+  let accountValue = contentArray[3].trim().split(" ")[0];
+  let otherData = contentArray[5].substring(40, 80).trim();
+  let dateValue = checkShortDate(otherData.substring(otherData.length - 8, otherData.length - 1));
+  let numberValue = parseInt(otherData.substring(0, 3));
+  if (accountNumber === accountValue && accountValue.length === 18 && dateValue && numberValue) {
+    retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
+  }
+  return retVal;
+}
+
+function payCardHipotekarna4(accountNumber, contentArray) {
+  let retVal = "";
+  if (contentArray.length < 6) return retVal;
+  let accountRow = contentArray[3].trim().split(" ");
+  let accountValue = accountRow[accountRow.length - 1];
   let otherData = contentArray[5].substring(40, 80).trim();
   let dateValue = checkShortDate(otherData.substring(otherData.length - 8, otherData.length - 1));
   let numberValue = parseInt(otherData.substring(0, 3));

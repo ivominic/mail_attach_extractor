@@ -124,6 +124,14 @@
     "sinonim": "Co-Mont d.o.o Podgorica",
     "maticni_broj": "02421038",
     "tip": "DOMACI",
+    "ziro_racun": "565000000000129970",
+    "folder": "IZVODI Z.R ELEKTRONSKA ARHIVA/013 Co-Mont/2022/Domaci/Lovcen Banka"
+  },
+  {
+    "firma": "013",
+    "sinonim": "Co-Mont d.o.o Podgorica",
+    "maticni_broj": "02421038",
+    "tip": "DOMACI",
     "ziro_racun": "510000000000801551",
     "folder": "IZVODI Z.R ELEKTRONSKA ARHIVA/013 Co-Mont/2022/Domaci/CKB Banka"
   },
@@ -452,7 +460,7 @@
     "sinonim": "BVP Consultancy",
     "maticni_broj": "03261620",
     "tip": "DOMACI",
-    "ziro_racun": "565-5498-83",
+    "ziro_racun": "565000000000549883",
     "folder": "IZVODI Z.R. ELEKTRONSKA ARHIVA 021/051.BVP Consultancy/2022/DOMACI"
   },
   {
@@ -886,6 +894,14 @@
     "tip": "DOMACI",
     "ziro_racun": "510000000016016195",
     "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/104. Casa Del Mobile izvodi/DOMACI"
+  },
+  {
+    "firma": "104",
+    "sinonim": "Casa Del Mobile d.o.o.",
+    "maticni_broj": "03428001",
+    "tip": "DOMACI",
+    "ziro_racun": "520000000004391459",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/104. Casa Del Mobile izvodi/DOMACI/HIPOTEKARNA BANKA"
   },
   {
     "firma": "105",
@@ -1742,6 +1758,14 @@
     "tip": "DOMACI",
     "ziro_racun": "520004000000457424",
     "folder": "IZVODI Z.R. ELEKTRONSKA ARHIVA 021/039 Karika Tech/2022/Platne kartice"
+  },
+  {
+    "firma": "042",
+    "sinonim": "Aspirano",
+    "maticni_broj": "03109569",
+    "tip": "DOMACI",
+    "ziro_racun": "520004000000225497",
+    "folder": "IZVODI Z.R. ELEKTRONSKA ARHIVA 021/042 Aspirano/2022/Platne kartice"
   },
   {
     "firma": "061",
