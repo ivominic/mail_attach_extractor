@@ -8,6 +8,7 @@ function findAccountNumberInSpecificLine(accountNumber, content) {
   !filename && (filename = domesticCKB(accountNumber, contentArray));
   !filename && (filename = domesticHipotekarna(accountNumber, contentArray));
   !filename && (filename = domesticLovcen(accountNumber, contentArray));
+  !filename && (filename = domesticLovcenObsolete(accountNumber, contentArray));
   !filename && (filename = domesticNLB(accountNumber, contentArray));
   !filename && (filename = domesticNLB2(accountNumber, contentArray));
   !filename && (filename = domesticPrvaBanka(accountNumber, contentArray));
@@ -90,6 +91,22 @@ function domesticHipotekarna(accountNumber, contentArray) {
 }
 
 function domesticLovcen(accountNumber, contentArray) {
+  let retVal = "";
+  if (contentArray.length < 7) return retVal;
+  let accountValue = contentArray[3].replace("Broj računa", "").replace(":", "").trim().split(" ")[0];
+  let temp = contentArray[6].replace("IZVOD BR.", "").replace("za dan ", "").trim().split(" ");
+  if (temp.length < 2) {
+    return retVal;
+  }
+  let numberValue = temp[0].trim();
+  let dateValue = temp[1].trim();
+  if (accountNumber === accountValue && accountValue.length <= 18 && dateValue.length === 10) {
+    retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
+  }
+  return retVal;
+}
+
+function domesticLovcenObsolete(accountNumber, contentArray) {
   let retVal = "";
   if (contentArray.length < 7) return retVal;
   let accountValue = contentArray[3].trim();

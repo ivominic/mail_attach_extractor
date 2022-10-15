@@ -904,6 +904,22 @@
     "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/104. Casa Del Mobile izvodi/DOMACI/HIPOTEKARNA BANKA"
   },
   {
+    "firma": "104",
+    "sinonim": "Casa Del Mobile d.o.o.",
+    "maticni_broj": "03428001",
+    "tip": "DOMACI",
+    "ziro_racun": "530-0000000093180-27",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/104. Casa Del Mobile izvodi/DOMACI/NLB"
+  },
+  {
+    "firma": "104",
+    "sinonim": "Casa Del Mobile d.o.o.",
+    "maticni_broj": "03428001",
+    "tip": "DOMACI",
+    "ziro_racun": "555-9003603633-49",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/104. Casa Del Mobile izvodi/DOMACI/ADDIKO BANKA"
+  },
+  {
     "firma": "105",
     "sinonim": "Preduzetnik Anna Korotkova",
     "maticni_broj": "1512992218015",
@@ -1116,8 +1132,8 @@
     "sinonim": "BP Pro Ing",
     "maticni_broj": "03067491",
     "tip": "DEVIZNI",
-    "ziro_racun": null,
-    "folder": null
+    "ziro_racun": "420-0101-520042000000689003",
+    "folder": "IZVODI Z.R. ELEKTRONSKA ARHIVA 021/027 BP Proing/2022/Devizni"
   },
   {
     "firma": "029",
@@ -1628,8 +1644,8 @@
     "sinonim": "Magma Group",
     "maticni_broj": "03409325",
     "tip": "DEVIZNI",
-    "ziro_racun": null,
-    "folder": null
+    "ziro_racun": "ME25540000007300738998",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/094.Magma Group/DEVIZNI"
   },
   {
     "firma": "095",
