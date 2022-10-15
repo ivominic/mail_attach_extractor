@@ -34,13 +34,19 @@ function findAccountNumberInSpecificLine(accountNumber, content) {
 
 function domesticAddiko(accountNumber, contentArray) {
   let retVal = "";
-  let accountPosition = contentArray[8].indexOf(" za račun ") + 10;
-  let datePosition = contentArray[9].indexOf(" na dan ") + 8;
-  let numberPosition = contentArray[8].indexOf("Izvod broj ") + 11;
+  let row1 = contentArray[8];
+  let row2 = contentArray[9];
+  if (row1.indexOf(" za račun ") < 0 || row2.indexOf(" na dan ") < 0) {
+    row1 = contentArray[9];
+    row2 = contentArray[10];
+  }
+  let accountPosition = row1.indexOf(" za račun ") + 10;
+  let datePosition = row2.indexOf(" na dan ") + 8;
+  let numberPosition = row1.indexOf("Izvod broj ") + 11;
   if (accountPosition >= 10 && datePosition >= 8 && numberPosition >= 11) {
-    let accountValue = contentArray[8].substring(accountPosition, accountPosition + 18).trim();
-    let dateValue = checkDate(contentArray[9].substring(datePosition, datePosition + 10).trim());
-    let numberValue = parseInt(contentArray[8].substring(numberPosition, numberPosition + 3).trim());
+    let accountValue = row1.substring(accountPosition, accountPosition + 18).trim();
+    let dateValue = checkDate(row2.substring(datePosition, datePosition + 10).trim());
+    let numberValue = parseInt(row1.substring(numberPosition, numberPosition + 3).trim());
     if (accountNumber === accountValue && accountValue.length <= 18) {
       retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
     }
