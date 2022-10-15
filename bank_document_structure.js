@@ -23,6 +23,7 @@ function findAccountNumberInSpecificLine(accountNumber, content) {
   !filename && (filename = foreignHipotekarna2(accountNumber, contentArray));
   !filename && (filename = foreignLovcen(accountNumber, contentArray));
   !filename && (filename = foreignNLB(accountNumber, contentArray));
+  !filename && (filename = foreignNLB2(accountNumber, contentArray));
   !filename && (filename = foreignZiirat(accountNumber, contentArray));
   !filename && (filename = payCardHipotekarna(accountNumber, contentArray));
   !filename && (filename = payCardHipotekarna2(accountNumber, contentArray));
@@ -340,6 +341,30 @@ function foreignNLB(accountNumber, contentArray) {
   let dateValue = checkDate(contentArray[26].substring(0, 10).trim());
   let numberValue = parseInt(contentArray[17].substring(9, 12).trim());
   if (accountValue === accountNumber && accountValue.length === 13 && dateValue && numberValue) {
+    retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
+  }
+  return retVal;
+}
+
+function foreignNLB2(accountNumber, contentArray) {
+  //Impossible to find otherwise. Complete idiots in this bank.
+  let retVal = "";
+  if (contentArray.length < 27) return retVal;
+  let accountPosition = contentArray[0].trim().split(" ");
+  let accountValue = accountPosition[accountPosition.length - 1];
+  let dateValue = "",
+    numberValue = "";
+  contentArray.forEach((element) => {
+    if (!dateValue && element.includes("PODGORICA")) {
+      let temp = element.replace("\n", "");
+      dateValue = checkDate(temp.replace("PODGORICA", "").trim());
+    }
+    if (!numberValue && element.includes("IZVOD Br.")) {
+      let temp = element.replace("\n", "");
+      numberValue = temp.substring(temp.indexOf("IZVOD Br.") + 9, temp.indexOf("IZVOD Br.") + 12).trim();
+    }
+  });
+  if (accountValue === accountNumber && dateValue && numberValue) {
     retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
   }
   return retVal;
