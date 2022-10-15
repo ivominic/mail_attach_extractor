@@ -11,6 +11,7 @@ function findAccountNumberInSpecificLine(accountNumber, content) {
   !filename && (filename = domesticLovcenObsolete(accountNumber, contentArray));
   !filename && (filename = domesticNLB(accountNumber, contentArray));
   !filename && (filename = domesticNLB2(accountNumber, contentArray));
+  !filename && (filename = domesticNLB3(accountNumber, contentArray));
   !filename && (filename = domesticPrvaBanka(accountNumber, contentArray));
   !filename && (filename = domesticZapad(accountNumber, contentArray));
   !filename && (filename = domesticZiirat(accountNumber, contentArray));
@@ -111,7 +112,7 @@ function domesticLovcenObsolete(accountNumber, contentArray) {
   if (contentArray.length < 7) return retVal;
   let accountValue = contentArray[3].trim();
   let numberValue = contentArray[2].trim().substring(contentArray[2].trim().length - 3);
-  let dateValue = contentArray[6].trim().substring(contentArray[6].trim().length - 10);
+  let dateValue = checkDate(contentArray[6].trim().substring(contentArray[6].trim().length - 10));
   if (accountNumber === accountValue && accountValue.length <= 18 && dateValue.length === 10) {
     retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
   }
@@ -200,6 +201,28 @@ function domesticNLB2(accountNumber, contentArray) {
   return retVal;
 }
 
+function domesticNLB3(accountNumber, contentArray) {
+  //Read all data from the last line - footer info
+  let retVal = "";
+  if (contentArray.length < 20) return retVal;
+  let temp = contentArray[contentArray.length - 2];
+  if (temp.length < 50) {
+    return retVal;
+  }
+  let accountPosition = temp.indexOf("Za račun ") + 9;
+  let numberPosition = temp.indexOf("Izvod br. ") + 10;
+  let datePosition = temp.indexOf("Izvod za datum ") + 15;
+  if (accountPosition < 20 || datePosition < 40) {
+    return retVal;
+  }
+  let accountValue = temp.substring(accountPosition, accountPosition + 21).trim();
+  let numberValue = temp.substring(numberPosition, numberPosition + 4).trim();
+  let dateValue = checkDate(temp.substring(datePosition, datePosition + 11).trim());
+  if (accountValue === accountNumber && accountValue.length <= 21 && numberValue && dateValue) {
+    retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
+  }
+  return retVal;
+}
 function foreignAdriatic(accountNumber, contentArray) {
   let retVal = "";
   if (contentArray.length < 9) return retVal;
