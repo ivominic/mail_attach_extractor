@@ -236,6 +236,9 @@ function domesticNLB4(accountNumber, contentArray) {
   let retVal = "";
   if (contentArray.length < 20) return retVal;
   let accountPosition = contentArray[0].trim().split(" ");
+  if (accountPosition.length < 5) {
+    return retVal;
+  }
   let accountValue = accountPosition[4].replace("\n", "");
   let numberValue = accountPosition[2];
   let dateValue = "";
