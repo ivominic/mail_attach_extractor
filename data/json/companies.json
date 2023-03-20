@@ -136,6 +136,14 @@
     "folder": "IZVODI Z.R ELEKTRONSKA ARHIVA/013 Co-Mont/2023/Domaci/CKB Banka"
   },
   {
+    "firma": "013",
+    "sinonim": "Co-Mont d.o.o Podgorica",
+    "maticni_broj": "02421038",
+    "tip": "DOMACI",
+    "ziro_racun": "580011000000047556",
+    "folder": "IZVODI Z.R ELEKTRONSKA ARHIVA/013 Co-Mont/2023/Domaci/Adriatic banka"
+  },
+  {
     "firma": "015",
     "sinonim": "VE&MA COMPANY",
     "maticni_broj": "03471268",
@@ -556,7 +564,7 @@
     "sinonim": "Megatrend CG",
     "maticni_broj": "03334414",
     "tip": "DOMACI",
-    "ziro_racun": "null",
+    "ziro_racun": "540-000000001150468",
     "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/063.Megatrend CG/2023/DOMACI"
   },
   {
@@ -781,7 +789,7 @@
     "maticni_broj": "03408850",
     "tip": "DOMACI",
     "ziro_racun": "565000000000605852",
-    "folder": "IZVODI Z.R ELEKTRONSKA ARHIVA 057/087. Ida Grad/2023/DOMACI/LOVCEN"
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/087. Ida Grad/2023/DOMACI/LOVCEN"
   },
   {
     "firma": "088",
@@ -820,8 +828,8 @@
     "sinonim": "Megrap",
     "maticni_broj": "02118998",
     "tip": "DOMACI",
-    "ziro_racun": "510-0000000203187-27",
-    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/093.Megrap/2023/DOMACI"
+    "ziro_racun": "510000000020318727",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/093.Megrap izvodi/2023/DOMACI"
   },
   {
     "firma": "094",
@@ -869,7 +877,15 @@
     "maticni_broj": "03390373",
     "tip": "DOMACI",
     "ziro_racun": "580000000000097479",
-    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/099. CK Group Investments/2023/DOMACI"
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/099. CK Group Investments/2023/DOMACI/ADRIATIC"
+  },
+  {
+    "firma": "099",
+    "sinonim": "CK Groiup Investment D.O.O.",
+    "maticni_broj": "03390373",
+    "tip": "DOMACI",
+    "ziro_racun": "575-0000000001563-89",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/099. CK Group Investments/2023/DOMACI/ZIRAAT"
   },
   {
     "firma": "100",
@@ -984,6 +1000,38 @@
     "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/116. Regina Comerc/2023/Domaci/CKB Banka"
   },
   {
+    "firma": "116",
+    "sinonim": "Regina Comerc",
+    "maticni_broj": "02661411",
+    "tip": "DOMACI",
+    "ziro_racun": "555-980-22",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/116. Regina Comerc/2023/Domaci/Addiko Banka"
+  },
+  {
+    "firma": "117",
+    "sinonim": "ATELJE A22 DOO",
+    "maticni_broj": "03516717",
+    "tip": "DOMACI",
+    "ziro_racun": "510000000016910244",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/117. Atelje A22 doo/2023/Domaci/CKB Banka"
+  },
+  {
+    "firma": "118",
+    "sinonim": "SOUTH EAST TRADING AND RESOURCES CO DOO",
+    "maticni_broj": "03524833",
+    "tip": "DOMACI",
+    "ziro_racun": "540-000000001319345",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/118. South East Trading and Resources Co/2023/Domaci"
+  },
+  {
+    "firma": "119",
+    "sinonim": "Preduzetnik Igor Malkov",
+    "maticni_broj": "1910994234005",
+    "tip": "DOMACI",
+    "ziro_racun": "535-0000000021925-70",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/119.Preduzetnik Igor Malkov/2023/Domaci"
+  },
+  {
     "firma": "001",
     "sinonim": "Novosti Pres",
     "maticni_broj": "02329891",
@@ -1086,6 +1134,22 @@
     "tip": "DEVIZNI",
     "ziro_racun": "420-0101-520042000000545152",
     "folder": "IZVODI Z.R ELEKTRONSKA ARHIVA/013 Co-Mont/2023/Devizni/Hipotekarna Banka"
+  },
+  {
+    "firma": "013",
+    "sinonim": "Co-Mont d.o.o Podgorica",
+    "maticni_broj": "02421038",
+    "tip": "DEVIZNI",
+    "ziro_racun": "420-0100-580420000000149811",
+    "folder": "IZVODI Z.R ELEKTRONSKA ARHIVA/013 Co-Mont/2023/Devizni/Adriatic Banka"
+  },
+  {
+    "firma": "015",
+    "sinonim": "VE&MA COMPANY",
+    "maticni_broj": "03471268",
+    "tip": "DEVIZNI",
+    "ziro_racun": "ME25510000000016668326",
+    "folder": "IZVODI Z.R. ELEKTRONSKA ARHIVA/015.VE&MA Company izvodi/2023/Devizni"
   },
   {
     "firma": "016",
@@ -1436,7 +1500,7 @@
     "sinonim": "Gradac",
     "maticni_broj": "02735644",
     "tip": "DEVIZNI",
-    "ziro_racun": "420-0100-520042000000032023",
+    "ziro_racun": "420-0100-520042000000032022",
     "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/061.Gradac/2023/Devizni"
   },
   {
@@ -1668,8 +1732,8 @@
     "sinonim": "Totohem",
     "maticni_broj": "02096277",
     "tip": "DEVIZNI",
-    "ziro_racun": null,
-    "folder": null
+    "ziro_racun": "420-0310-4200000232000",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/091.Totohem/2023/DEVIZNI"
   },
   {
     "firma": "092",
@@ -1716,8 +1780,8 @@
     "sinonim": "Maslinjaci Baletic doo",
     "maticni_broj": "03408809",
     "tip": "DEVIZNI",
-    "ziro_racun": null,
-    "folder": null
+    "ziro_racun": "420-0105-520004200000297461",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/098. Maslinjaci Baletic izvodi/2023/DEVIZNI"
   },
   {
     "firma": "099",
@@ -1725,7 +1789,15 @@
     "maticni_broj": "03390373",
     "tip": "DEVIZNI",
     "ziro_racun": "420-0100-580420000000092387",
-    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/099. CK Group Investments/2023/DEVIZNI"
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/099. CK Group Investments/2023/DEVIZNI/ADRIATIC"
+  },
+  {
+    "firma": "099",
+    "sinonim": "CK Groiup Investment D.O.O.",
+    "maticni_broj": "03390373",
+    "tip": "DEVIZNI",
+    "ziro_racun": "ME25575015010001328417",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/099. CK Group Investments/2023/DEVIZNI/ZIRAAT"
   },
   {
     "firma": "100",
@@ -1772,8 +1844,8 @@
     "sinonim": "Preduzetnik Anna Korotkova",
     "maticni_broj": "1512992218015",
     "tip": "DEVIZNI",
-    "ziro_racun": null,
-    "folder": null
+    "ziro_racun": "420-0105-520004200000301147",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/105. Preduzetnik Anna Korotkova izvodi/2023/DEVIZNI"
   },
   {
     "firma": "106",
@@ -1798,6 +1870,22 @@
     "tip": "DEVIZNI",
     "ziro_racun": "ME25520420000000054250",
     "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/114. Bloom Group/2023/DEVIZNI"
+  },
+  {
+    "firma": "117",
+    "sinonim": "ATELJE A22 DOO",
+    "maticni_broj": "03516717",
+    "tip": "DEVIZNI",
+    "ziro_racun": "ME25510000000016910244",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/117. Atelje A22 doo/2023/Devizni/CKB Banka"
+  },
+  {
+    "firma": "119",
+    "sinonim": "Preduzetnik Igor Malkov",
+    "maticni_broj": "1910994234005",
+    "tip": "DEVIZNI",
+    "ziro_racun": "ME25535005140000333987",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/119.Preduzetnik Igor Malkov/2023/Devizni"
   },
   {
     "firma": "009",

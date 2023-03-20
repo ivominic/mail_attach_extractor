@@ -198,11 +198,18 @@ function domesticNLB2(accountNumber, contentArray) {
   let accountPosition = contentArray[0].trim().split(" ");
   let accountValue = accountPosition[accountPosition.length - 1];
   let numberValue = accountPosition[accountPosition.length - 3];
-  let dateRow1 = contentArray[16].trim();
-  let dateRow2 = contentArray[17].trim();
+  let dateRow1 = contentArray[13].trim();
+  let dateRow2 = contentArray[14].trim();
+  let dateRow3 = contentArray[15].trim();
+  let dateRow4 = contentArray[16].trim();
+  let dateRow5 = contentArray[17].trim();
   let dateVal1 = dateRow1.substring(dateRow1.length - 21, dateRow1.length - 10).trim();
   let dateVal2 = dateRow2.substring(dateRow2.length - 21, dateRow2.length - 10).trim();
-  let dateValue = checkDate(dateVal1) || checkDate(dateVal2);
+  let dateVal3 = dateRow2.substring(dateRow3.length - 21, dateRow3.length - 10).trim();
+  let dateVal4 = dateRow2.substring(dateRow4.length - 21, dateRow4.length - 10).trim();
+  let dateVal5 = dateRow2.substring(dateRow5.length - 21, dateRow5.length - 10).trim();
+  let dateValue =
+    checkDate(dateVal1) || checkDate(dateVal2) || checkDate(dateVal3) || checkDate(dateVal4) || checkDate(dateVal5);
   if (accountValue === accountNumber && accountValue?.length <= 21 && numberValue && dateValue) {
     retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
   }
