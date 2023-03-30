@@ -13,6 +13,7 @@ function findAccountNumberInSpecificLine(accountNumber, content) {
   !filename && (filename = domesticNLB2(accountNumber, contentArray));
   !filename && (filename = domesticNLB3(accountNumber, contentArray));
   !filename && (filename = domesticNLB4(accountNumber, contentArray));
+  !filename && (filename = domesticNLB5(accountNumber, contentArray));
   !filename && (filename = domesticPrvaBanka(accountNumber, contentArray));
   !filename && (filename = domesticZapad(accountNumber, contentArray));
   !filename && (filename = domesticZiirat(accountNumber, contentArray));
@@ -248,6 +249,32 @@ function domesticNLB4(accountNumber, contentArray) {
   }
   let accountValue = accountPosition[4].replace("\n", "");
   let numberValue = accountPosition[2];
+  let dateValue = "";
+  contentArray.forEach((element) => {
+    if (element.includes("ZA PROMJENU SREDSTAVA NA RAČUNU DANA")) {
+      let temp = element.replace("ZA PROMJENU SREDSTAVA NA RAČUNU DANA").trim().split(" ");
+      dateValue = checkDate(temp[0]);
+      if (!dateValue) dateValue = checkDate(temp[1]);
+    }
+  });
+  if (accountValue === accountNumber && accountValue?.length <= 21 && numberValue && dateValue) {
+    retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
+  }
+  return retVal;
+}
+
+/** This may replace domesticNLB4, since they have changed structure of the file. */
+function domesticNLB5(accountNumber, contentArray) {
+  let retVal = "";
+  if (contentArray.length < 20) return retVal;
+  let accountPosition = contentArray[0].trim().split(" ");
+  if (accountPosition.length < 5) {
+    return retVal;
+  }
+  let accountValue = accountPosition[accountPosition.length - 1].replace("\n", "");
+  let numberValue = accountPosition[accountPosition.length - 3];
+  console.log("ACC", accountValue);
+  console.log("NUMBER", numberValue);
   let dateValue = "";
   contentArray.forEach((element) => {
     if (element.includes("ZA PROMJENU SREDSTAVA NA RAČUNU DANA")) {
