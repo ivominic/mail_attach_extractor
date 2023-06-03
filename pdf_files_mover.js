@@ -15,7 +15,7 @@ const readPdf = async (uri) => {
 };
 
 // Testing
-const filename = "d:/test/zogo.pdf";
+const filename = "c:/test/ridmont.pdf";
 readPdf(filename);
 /*
 const mightyPdfParser = require("mighty-pdf-parser");

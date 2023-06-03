@@ -96,15 +96,19 @@ function fileContent(filename, content) {
   }
 }
 
-function moveFiles(sourceDir, destinationDir, destFilename, message) {
+async function moveFiles(sourceDir, destinationDir, destFilename, message) {
   if (util.makeDir(destinationDir)) {
     if (fs.existsSync(destinationDir + destFilename)) {
       let logMessage = `UPOZORENJE!!!! "${sourceDir}" FAJL SA ISTIM NAZIVOM "${destFilename}" VEĆ POSTOJI NA PUTANJI (${destinationDir}).`;
       util.writeLog(logMessage, true);
     } else {
-      fs.rename(sourceDir, destinationDir + destFilename, function (err) {
+      await fs.copyFile(sourceDir, destinationDir + destFilename, function (err) {
         if (err) util.processError(err);
         util.writeLog(message, false);
+      });
+      fs.rm(sourceDir, (error) => {
+        util.writeLog(error, true);
+        util.processError(error);
       });
     }
   }

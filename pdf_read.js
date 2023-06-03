@@ -1,6 +1,6 @@
 const { PdfReader } = require("pdfreader");
 
-let pdfFilePath = "d:/test/zogo.pdf";
+let pdfFilePath = "c:/test/ridmont.pdf";
 
 new PdfReader().parseFileItems(pdfFilePath, (err, item) => {
   parseItem(err, item);
