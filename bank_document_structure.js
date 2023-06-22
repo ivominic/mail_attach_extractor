@@ -27,6 +27,7 @@ function findAccountNumberInSpecificLine(accountNumber, content) {
   !filename && (filename = foreignNLB(accountNumber, contentArray));
   !filename && (filename = foreignNLB2(accountNumber, contentArray));
   !filename && (filename = foreignZiirat(accountNumber, contentArray));
+  !filename && (filename = foreignZiirat2(accountNumber, contentArray));
   !filename && (filename = payCardHipotekarna(accountNumber, contentArray));
   !filename && (filename = payCardHipotekarna2(accountNumber, contentArray));
   !filename && (filename = payCardHipotekarna3(accountNumber, contentArray));
@@ -443,6 +444,27 @@ function foreignZiirat(accountNumber, contentArray) {
   let dateVal2 = contentArray[27].substring(34, 55).trim();
   let dateVal3 = contentArray[28].substring(34, 55).trim();
   let dateVal4 = contentArray[29].substring(34, 55).trim();
+  let dateValue = checkDate(dateVal1) || checkDate(dateVal2) || checkDate(dateVal3) || checkDate(dateVal4);
+  let rowLength = contentArray[0].trim().length;
+  let numberValue = contentArray[0].trim().substring(rowLength - 8, rowLength - 5);
+  if (accountValue && dateValue && numberValue) {
+    if (accountNumber === accountValue && accountValue?.length === 22) {
+      retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
+    }
+  }
+  return retVal;
+}
+
+function foreignZiirat2(accountNumber, contentArray) {
+  console.log(contentArray);
+  let retVal = "";
+  if (contentArray.length < 30) return retVal;
+  let accountPosition = contentArray[3].indexOf("Račun: ") + 7;
+  let accountValue = contentArray[3].substring(accountPosition, accountPosition + 50).trim();
+  let dateVal1 = contentArray[21].substring(44, 65).trim();
+  let dateVal2 = contentArray[22].substring(44, 65).trim();
+  let dateVal3 = contentArray[23].substring(44, 65).trim();
+  let dateVal4 = contentArray[24].substring(44, 65).trim();
   let dateValue = checkDate(dateVal1) || checkDate(dateVal2) || checkDate(dateVal3) || checkDate(dateVal4);
   let rowLength = contentArray[0].trim().length;
   let numberValue = contentArray[0].trim().substring(rowLength - 8, rowLength - 5);
