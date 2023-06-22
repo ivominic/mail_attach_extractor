@@ -18,6 +18,7 @@ function findAccountNumberInSpecificLine(accountNumber, content) {
   !filename && (filename = domesticPrvaBanka(accountNumber, contentArray));
   !filename && (filename = domesticZapad(accountNumber, contentArray));
   !filename && (filename = domesticZiirat(accountNumber, contentArray));
+  !filename && (filename = domesticUniversalCapitalBank(accountNumber, contentArray));
   !filename && (filename = foreignAdriatic(accountNumber, contentArray));
   !filename && (filename = foreignAdriatic2(accountNumber, contentArray));
   !filename && (filename = foreignCKB(accountNumber, contentArray));
@@ -289,8 +290,6 @@ function domesticNLB5(accountNumber, contentArray) {
   }
   let accountValue = accountPosition[accountPosition.length - 1].replace("\n", "");
   let numberValue = accountPosition[accountPosition.length - 3];
-  console.log("ACC", accountValue);
-  console.log("NUMBER", numberValue);
   let dateValue = "";
   contentArray.forEach((element) => {
     if (element.includes("ZA PROMJENU SREDSTAVA NA RAČUNU DANA")) {
@@ -300,6 +299,32 @@ function domesticNLB5(accountNumber, contentArray) {
     }
   });
   if (accountValue === accountNumber && accountValue?.length <= 21 && numberValue && dateValue) {
+    retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
+  }
+  return retVal;
+}
+
+function domesticUniversalCapitalBank(accountNumber, contentArray) {
+  console.log("YYYYYYYYYYYYYYYYYYYYYYYYYYY");
+  let retVal = "";
+  if (contentArray.length < 9) return retVal;
+  let accountValue, dateValue, numberValue;
+  contentArray.forEach((item) => {
+    if (item.includes("Izvod broj / Statement No.:")) {
+      let numberPosition = item.trim().split(" ");
+      numberValue = parseInt(numberPosition[numberPosition.length - 1]);
+    }
+    if (item.includes("Datum izvoda / Date of Statement:")) {
+      let datePosition = item.trim().split(" ");
+      console.log(datePosition);
+      dateValue = datePosition[datePosition.length - 1];
+    }
+    if (item.includes("Račun / Account:")) {
+      let accPosition = item.trim().split(" ");
+      accountValue = accPosition[accPosition.length - 1];
+    }
+  });
+  if (accountNumber === accountValue && dateValue && numberValue) {
     retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
   }
   return retVal;
@@ -456,7 +481,6 @@ function foreignZiirat(accountNumber, contentArray) {
 }
 
 function foreignZiirat2(accountNumber, contentArray) {
-  console.log(contentArray);
   let retVal = "";
   if (contentArray.length < 30) return retVal;
   let accountPosition = contentArray[3].indexOf("Račun: ") + 7;
