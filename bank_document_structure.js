@@ -5,6 +5,7 @@ function findAccountNumberInSpecificLine(accountNumber, content) {
   let filename = "";
   !filename && (filename = domesticAddiko(accountNumber, contentArray));
   !filename && (filename = domesticAdriatic(accountNumber, contentArray));
+  !filename && (filename = domesticAdriatic2(accountNumber, contentArray));
   !filename && (filename = domesticCKB(accountNumber, contentArray));
   !filename && (filename = domesticHipotekarna(accountNumber, contentArray));
   !filename && (filename = domesticLovcen(accountNumber, contentArray));
@@ -62,6 +63,20 @@ function domesticAdriatic(accountNumber, contentArray) {
   let dateArray = contentArray[6].trim().split(" ");
   let dateValue = checkDate(dateArray[dateArray.length - 1]);
   let numberArray = contentArray[2].trim().split(" ");
+  let numberValue = parseInt(numberArray[numberArray.length - 1]);
+  if (accountNumber === accountValue && accountValue?.length <= 18 && dateValue && numberValue) {
+    retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
+  }
+  return retVal;
+}
+
+function domesticAdriatic2(accountNumber, contentArray) {
+  let retVal = "";
+  if (contentArray.length < 9) return retVal;
+  let accountValue = contentArray[2].trim().split(":")[1].trim();
+  let dateArray = contentArray[4].trim().split(" ");
+  let dateValue = checkDate(dateArray[dateArray.length - 1]);
+  let numberArray = contentArray[1].trim().split(" ");
   let numberValue = parseInt(numberArray[numberArray.length - 1]);
   if (accountNumber === accountValue && accountValue?.length <= 18 && dateValue && numberValue) {
     retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;

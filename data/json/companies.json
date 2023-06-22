@@ -704,6 +704,14 @@
     "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/079. Alind/2023/Domaci"
   },
   {
+    "firma": "079",
+    "sinonim": "Alind doo Podgorica",
+    "maticni_broj": "03374882",
+    "tip": "DOMACI",
+    "ziro_racun": "510000000016764162",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/079. Alind/2023/DOMACI/Podracun"
+  },
+  {
     "firma": "080",
     "sinonim": "Haidery Construction Company",
     "maticni_broj": "03373061",
@@ -976,6 +984,14 @@
     "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/107. Boolean/2023/Domaci"
   },
   {
+    "firma": "109",
+    "sinonim": "Defa Montenegro doo",
+    "maticni_broj": "03507041",
+    "tip": "DOMACI",
+    "ziro_racun": "580000000000112126",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/109. Defa Montenegro/2023/DOMACI"
+  },
+  {
     "firma": "114",
     "sinonim": "Bloom Group",
     "maticni_broj": "03506959",
@@ -1028,8 +1044,40 @@
     "sinonim": "Preduzetnik Igor Malkov",
     "maticni_broj": "1910994234005",
     "tip": "DOMACI",
-    "ziro_racun": "535-0000000021925-70",
+    "ziro_racun": "535-21925-70",
     "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/119.Preduzetnik Igor Malkov/2023/Domaci"
+  },
+  {
+    "firma": "121",
+    "sinonim": "Dimitrijo Sine Mitre",
+    "maticni_broj": "03531031",
+    "tip": "DOMACI",
+    "ziro_racun": "510000000017014616",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/121. Dimitrijo Sine Mitre/2023/Domaci"
+  },
+  {
+    "firma": "123",
+    "sinonim": "Medjunarodni Institut za Gestalt",
+    "maticni_broj": "03458580",
+    "tip": "DOMACI",
+    "ziro_racun": "570-1110015819-41",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/123. Medjunarodni Institut za Gestalt doo/2023/Domaci"
+  },
+  {
+    "firma": "127",
+    "sinonim": "Advokat Andrija Marojevic",
+    "maticni_broj": "2909991710111",
+    "tip": "DOMACI",
+    "ziro_racun": "530-0000000166891-54",
+    "folder": "E-Arhiva/IZVODI ZR ELEKTRONSKA ARHIVA 057/127. Advokat Marojevic Andrija Izvodi/2023/DOMACI"
+  },
+  {
+    "firma": "129",
+    "sinonim": "Arbell",
+    "maticni_broj": "03525856",
+    "tip": "DOMACI",
+    "ziro_racun": "575-0000000002095-45",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/129. Arbell"
   },
   {
     "firma": "001",
@@ -1149,7 +1197,7 @@
     "maticni_broj": "03471268",
     "tip": "DEVIZNI",
     "ziro_racun": "ME25510000000016668326",
-    "folder": "IZVODI Z.R. ELEKTRONSKA ARHIVA/015.VE&MA Company izvodi/2023/Devizni"
+    "folder": "IZVODI Z.R ELEKTRONSKA ARHIVA/015.VE&MA Company izvodi/2023/Devizni"
   },
   {
     "firma": "016",
@@ -1500,7 +1548,7 @@
     "sinonim": "Gradac",
     "maticni_broj": "02735644",
     "tip": "DEVIZNI",
-    "ziro_racun": "420-0100-520042000000032022",
+    "ziro_racun": "420-0100-520042000000032023",
     "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/061.Gradac/2023/Devizni"
   },
   {
@@ -1732,7 +1780,7 @@
     "sinonim": "Totohem",
     "maticni_broj": "02096277",
     "tip": "DEVIZNI",
-    "ziro_racun": "420-0310-4200000232000",
+    "ziro_racun": "ME25520420000023200002",
     "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/091.Totohem/2023/DEVIZNI"
   },
   {
@@ -1780,7 +1828,7 @@
     "sinonim": "Maslinjaci Baletic doo",
     "maticni_broj": "03408809",
     "tip": "DEVIZNI",
-    "ziro_racun": "420-0105-520004200000297461",
+    "ziro_racun": "ME25520004200000297461",
     "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/098. Maslinjaci Baletic izvodi/2023/DEVIZNI"
   },
   {
@@ -1844,7 +1892,7 @@
     "sinonim": "Preduzetnik Anna Korotkova",
     "maticni_broj": "1512992218015",
     "tip": "DEVIZNI",
-    "ziro_racun": "420-0105-520004200000301147",
+    "ziro_racun": "ME25520004200000301147",
     "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/105. Preduzetnik Anna Korotkova izvodi/2023/DEVIZNI"
   },
   {
@@ -1862,6 +1910,14 @@
     "tip": "DEVIZNI",
     "ziro_racun": "ME2553506501000732903",
     "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/107. Boolean/2023/DEVIZNI"
+  },
+  {
+    "firma": "109",
+    "sinonim": "Defa Montenegro doo",
+    "maticni_broj": "03507041",
+    "tip": "DEVIZNI",
+    "ziro_racun": "420-0100-580420000000234589",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/109. Defa Montenegro/2023/DEVIZNI"
   },
   {
     "firma": "114",
@@ -1886,6 +1942,22 @@
     "tip": "DEVIZNI",
     "ziro_racun": "ME25535005140000333987",
     "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/119.Preduzetnik Igor Malkov/2023/Devizni"
+  },
+  {
+    "firma": "121",
+    "sinonim": "Dimitrijo Sine Mitre",
+    "maticni_broj": "03531031",
+    "tip": "DEVIZNI",
+    "ziro_racun": "ME25510000000017014616",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/121. Dimitrijo Sine Mitre/2023/Devizni"
+  },
+  {
+    "firma": "123",
+    "sinonim": "Medjunarodni Institut za Gestalt",
+    "maticni_broj": "03458580",
+    "tip": "DEVIZNI",
+    "ziro_racun": "ME25 5700 0011 1001 5819 41",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/123. Medjunarodni Institut za Gestalt doo/2023/Devizni"
   },
   {
     "firma": "009",
@@ -1998,5 +2070,13 @@
     "tip": "DOMACI",
     "ziro_racun": "520040000000533224",
     "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/095.Golf Scape/2023/PLATNE KARTICE"
+  },
+  {
+    "firma": "109",
+    "sinonim": "Defa Montenegro doo",
+    "maticni_broj": "03507041",
+    "tip": "DOMACI",
+    "ziro_racun": "580040000000089853",
+    "folder": "IZVODI ZR ELEKTRONSKA ARHIVA 057/109. Defa Montenegro/2023/PLATNE KARTICE"
   }
 ]
