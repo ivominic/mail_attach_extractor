@@ -16,6 +16,7 @@ function findAccountNumberInSpecificLine(accountNumber, content) {
   !filename && (filename = domesticNLB4(accountNumber, contentArray));
   !filename && (filename = domesticNLB5(accountNumber, contentArray));
   !filename && (filename = domesticPrvaBanka(accountNumber, contentArray));
+  !filename && (filename = domesticPrvaBanka2(accountNumber, contentArray));
   !filename && (filename = domesticZapad(accountNumber, contentArray));
   !filename && (filename = domesticZiirat(accountNumber, contentArray));
   !filename && (filename = domesticUniversalCapitalBank(accountNumber, contentArray));
@@ -155,6 +156,23 @@ function domesticPrvaBanka(accountNumber, contentArray) {
     let accountValue = contentArray[13].substring(accountPosition, accountPosition + 40).trim();
     let dateValue = checkDate(datePosition[datePosition.length - 1]);
     let numberValue = parseInt(numberPosition[numberPosition.length - 1]);
+    if (accountNumber === accountValue && accountValue?.length <= 12 && dateValue?.length === 10) {
+      retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
+    }
+  }
+  return retVal;
+}
+
+function domesticPrvaBanka2(accountNumber, contentArray) {
+  let retVal = "";
+  if (contentArray.length < 14) return retVal;
+  let accountPosition = contentArray[15].indexOf("Račun: ") + 7;
+  let datePosition = contentArray[14].trim().split(" ");
+  let numberPosition = contentArray[11].trim().split(" ");
+  if (accountPosition >= 7) {
+    let accountValue = contentArray[15].substring(accountPosition, accountPosition + 40).trim();
+    let dateValue = checkDate(datePosition[datePosition.length - 1]);
+    let numberValue = formatNumber(parseInt(numberPosition[numberPosition.length - 1]));
     if (accountNumber === accountValue && accountValue?.length <= 12 && dateValue?.length === 10) {
       retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
     }
@@ -305,7 +323,6 @@ function domesticNLB5(accountNumber, contentArray) {
 }
 
 function domesticUniversalCapitalBank(accountNumber, contentArray) {
-  console.log("YYYYYYYYYYYYYYYYYYYYYYYYYYY");
   let retVal = "";
   if (contentArray.length < 9) return retVal;
   let accountValue, dateValue, numberValue;
@@ -316,7 +333,6 @@ function domesticUniversalCapitalBank(accountNumber, contentArray) {
     }
     if (item.includes("Datum izvoda / Date of Statement:")) {
       let datePosition = item.trim().split(" ");
-      console.log(datePosition);
       dateValue = datePosition[datePosition.length - 1];
     }
     if (item.includes("Račun / Account:")) {
