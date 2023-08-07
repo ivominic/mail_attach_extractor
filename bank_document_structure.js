@@ -155,6 +155,9 @@ function domesticPrvaBanka(accountNumber, contentArray) {
   let numberPosition = contentArray[7].trim().split(" ");
   if (accountPosition >= 7) {
     let accountValue = contentArray[13].substring(accountPosition, accountPosition + 40).trim();
+    if (!accountValue) {
+      accountValue = contentArray[14]?.trim();
+    }
     let dateValue = checkDate(datePosition[datePosition.length - 1]);
     let numberValue = parseInt(numberPosition[numberPosition.length - 1]);
     if (accountNumber === accountValue && accountValue?.length <= 12 && dateValue?.length === 10) {
