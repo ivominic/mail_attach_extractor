@@ -188,10 +188,10 @@ function domesticZapad(accountNumber, contentArray) {
   let retVal = "";
   if (contentArray.length < 5) return retVal;
   let accountPosition = contentArray[4].indexOf("Žiro račun: ") + 12;
-  let datePosition = contentArray[2].indexOf("za dan ") + 6;
+  let datePosition = contentArray[2].indexOf("za dan ") + 7;
   let numberPosition = contentArray[0].indexOf("IZVOD RAČUNA - broj ") + 19;
   if (accountPosition >= 12 && datePosition >= 6 && numberPosition >= 19) {
-    let accountValue = contentArray[4].substring(accountPosition, accountPosition + 40).trim();
+    let accountValue = contentArray[4].substring(accountPosition, accountPosition + 33).trim();
     let dateValue = checkDate(contentArray[2].substring(datePosition).trim());
     let numberValue = parseInt(contentArray[0].substring(numberPosition).trim());
     if (accountNumber === accountValue && accountValue?.length <= 18) {
