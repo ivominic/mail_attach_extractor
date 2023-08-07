@@ -30,6 +30,7 @@ function findAccountNumberInSpecificLine(accountNumber, content) {
   !filename && (filename = foreignNLB2(accountNumber, contentArray));
   !filename && (filename = foreignZiirat(accountNumber, contentArray));
   !filename && (filename = foreignZiirat2(accountNumber, contentArray));
+  !filename && (filename = foreignZiirat3(accountNumber, contentArray));
   !filename && (filename = payCardHipotekarna(accountNumber, contentArray));
   !filename && (filename = payCardHipotekarna2(accountNumber, contentArray));
   !filename && (filename = payCardHipotekarna3(accountNumber, contentArray));
@@ -76,7 +77,7 @@ function domesticAdriatic(accountNumber, contentArray) {
 function domesticAdriatic2(accountNumber, contentArray) {
   let retVal = "";
   if (contentArray.length < 9) return retVal;
-  let accountValue = contentArray[2].trim().split(":")[1].trim();
+  let accountValue = contentArray[2]?.trim().split(":")[1]?.trim();
   let dateArray = contentArray[4].trim().split(" ");
   let dateValue = checkDate(dateArray[dateArray.length - 1]);
   let numberArray = contentArray[1].trim().split(" ");
@@ -512,6 +513,26 @@ function foreignZiirat2(accountNumber, contentArray) {
     if (accountNumber === accountValue && accountValue?.length === 22) {
       retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
     }
+  }
+  return retVal;
+}
+
+function foreignZiirat3(accountNumber, contentArray) {
+  let retVal = "";
+  if (contentArray.length < 30) return retVal;
+  let accountValue, numberValue, dateValue;
+  contentArray.forEach((item) => {
+    if (item.includes("Izvod broj") && item.includes("Za račun") && item.includes("za datum")) {
+      let tempArray = item.trim().split(" ");
+      for (let i = 0; i < tempArray.length; i++) {
+        tempArray[i] === "broj" && (numberValue = tempArray[i + 1]);
+        tempArray[i] === "račun" && (accountValue = tempArray[i + 1]);
+        tempArray[i] === "datum" && (dateValue = tempArray[i + 1]);
+      }
+    }
+  });
+  if (accountValue && dateValue && numberValue && accountNumber === accountValue && accountValue?.length === 22) {
+    retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
   }
   return retVal;
 }
