@@ -330,7 +330,8 @@ function domesticUniversalCapitalBank(accountNumber, contentArray) {
   let retVal = "";
   if (contentArray.length < 9) return retVal;
   let accountValue, dateValue, numberValue;
-  contentArray.forEach((item) => {
+  for (let i = 0; i < contentArray.length; i++) {
+    const item = contentArray[i];
     if (item.includes("Izvod broj / Statement No.:")) {
       let numberPosition = item.trim().split(" ");
       numberValue = parseInt(numberPosition[numberPosition.length - 1]);
@@ -342,8 +343,11 @@ function domesticUniversalCapitalBank(accountNumber, contentArray) {
     if (item.includes("Račun / Account:")) {
       let accPosition = item.trim().split(" ");
       accountValue = accPosition[accPosition.length - 1];
+      if (accountValue !== accountNumber) {
+        accountValue = contentArray[i + 2]?.trim();
+      }
     }
-  });
+  }
   if (accountNumber === accountValue && dateValue && numberValue) {
     retVal = `br.${formatNumber(numberValue)} od ${dateValue}.pdf`;
   }
