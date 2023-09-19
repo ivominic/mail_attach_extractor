@@ -10,6 +10,7 @@ let companiesData = JSON.parse(fs.readFileSync("data/json/companies.json", { enc
 
 let readDirectoryPath = folderData.readDir;
 let writeDirectoryPath = folderData.writeDir;
+let writeBackupDirectoryPath = folderData.writeBackupDir;
 //console.log(readDirectoryPath, writeDirectoryPath);
 /*pdfUtil.info(pdf_path, function (err, info) {
   if (err) throw err;
@@ -81,8 +82,9 @@ function fileContent(filename, content) {
 
     if (destFilename) {
       let destinationFile = `${writeDirectoryPath}/${companyFolder}/`;
+      let destinationBackupFile = `${writeBackupDirectoryPath}/${companyFolder}/`;
       let logMessage = `Uspjeh: "${filename}", kompanija: "${companyName}", žiro račun: "${companyAccountNumber}", putanja: "${destinationFile}${destFilename}"`;
-      moveFiles(readDirectoryPath + filename, destinationFile, destFilename, logMessage);
+      moveFiles(readDirectoryPath + filename, destinationFile, destFilename, logMessage, destinationBackupFile);
     } else {
       let logMessage = `Nije nađen nijedan žiro račun za fajl: "${filename}"`;
       if (!isAccountFound) {
@@ -96,7 +98,7 @@ function fileContent(filename, content) {
   }
 }
 
-async function moveFiles(sourceDir, destinationDir, destFilename, message) {
+async function moveFiles(sourceDir, destinationDir, destFilename, message, destinationBackupDir) {
   if (util.makeDir(destinationDir)) {
     if (fs.existsSync(destinationDir + destFilename)) {
       let logMessage = `UPOZORENJE!!!! "${sourceDir}" FAJL SA ISTIM NAZIVOM "${destFilename}" VEĆ POSTOJI NA PUTANJI (${destinationDir}).`;
@@ -105,6 +107,10 @@ async function moveFiles(sourceDir, destinationDir, destFilename, message) {
       await fs.copyFile(sourceDir, destinationDir + destFilename, function (err) {
         if (err) util.processError(err);
         util.writeLog(message, false);
+      });
+      util.makeDir(destinationBackupDir);
+      await fs.copyFile(sourceDir, destinationBackupDir + destFilename, function (err) {
+        if (err) util.processError(err);
       });
       fs.rm(sourceDir, (error) => {
         util.writeLog(error, true);

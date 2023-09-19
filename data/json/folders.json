@@ -1,4 +1,5 @@
 {
-  "readDir": "/home/slimbook/Documents/test/input/",
-  "writeDir": "/home/slimbook/Documents/test/output/"
+  "readDir": "C:/test/input/",
+  "writeDir": "C:/test/output/",
+  "writeBackupDir": "C:/test/output2/"
 }
