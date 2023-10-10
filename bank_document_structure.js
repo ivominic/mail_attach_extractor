@@ -169,12 +169,12 @@ function domesticPrvaBanka(accountNumber, contentArray) {
 
 function domesticPrvaBanka2(accountNumber, contentArray) {
   let retVal = "";
-  if (contentArray.length < 14) return retVal;
-  let accountPosition = contentArray[15].indexOf("Račun: ") + 7;
+  if (contentArray.length < 15) return retVal;
+  let accountPosition = contentArray[15]?.indexOf("Račun: ") + 7;
   let datePosition = contentArray[14]?.trim().split(" ");
   let numberPosition = contentArray[11]?.trim().split(" ");
   if (accountPosition >= 7) {
-    let accountValue = contentArray[15].substring(accountPosition, accountPosition + 40)?.trim();
+    let accountValue = contentArray[15]?.substring(accountPosition, accountPosition + 40)?.trim();
     let dateValue = checkDate(datePosition[datePosition.length - 1]);
     let numberValue = formatNumber(parseInt(numberPosition[numberPosition.length - 1]));
     if (accountNumber === accountValue && accountValue?.length <= 12 && dateValue?.length === 10) {
