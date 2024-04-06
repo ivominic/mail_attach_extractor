@@ -101,8 +101,9 @@ function fileContent(filename, content) {
 async function moveFiles(sourceDir, destinationDir, destFilename, message, destinationBackupDir) {
   if (util.makeDir(destinationDir)) {
     if (fs.existsSync(destinationDir + destFilename)) {
-      let logMessage = `UPOZORENJE!!!! "${sourceDir}" FAJL SA ISTIM NAZIVOM "${destFilename}" VEĆ POSTOJI NA PUTANJI (${destinationDir}).`;
-      util.writeLog(logMessage, true);
+      let logMessage = `UPOZORENJE!!!! "${sourceDir}" FAJL SA ISTIM NAZIVOM "${destFilename}" VEĆ POSTOJI NA PUTANJI (${destinationDir}) i uklonjen je iz izvornog direktorijuma.`;
+      util.writeLog(logMessage, true);d
+      fs.unlinkSync(sourceDir);
     } else {
       await fs.copyFile(sourceDir, destinationDir + destFilename, function (err) {
         if (err) util.processError(err);
